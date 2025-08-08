@@ -25,24 +25,32 @@
     body { font-family:'Lato', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); }
     h1,h2,h3,h4,h5,h6 { font-family:'Montserrat', ui-sans-serif, system-ui; }
     .no-scrollbar::-webkit-scrollbar{ display:none; } .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
-    #scrollProgress{ position: fixed; inset:0 auto auto 0; height:3px; width:0; background:var(--accent); z-index:50; }
     .link-underline { position: relative; }
     .link-underline::after { content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .2s ease; }
     .link-underline:hover::after, .link-underline:focus-visible::after { transform:scaleX(1); }
-    .nav-active { border-left-color: var(--accent); color: var(--text) !important; font-weight:600; }
     .badge { display:inline-flex; align-items:center; gap:.375rem; border:1px solid var(--border); border-radius:9999px; padding:.125rem .5rem; font-size:.75rem; }
-    .chip { display:inline-block; background:rgba(2,6,23,.05); border-radius:9999px; padding:.25rem .5rem; font-size:.75rem; margin:.25rem .25rem 0 0; }
-    [data-theme='dark'] .chip{ background:rgba(255,255,255,.06); }
-    /* publication cards like the reference */
+    /* publication cards */
     .pub-card{ border:1px solid var(--border); background:var(--card); border-radius:14px; box-shadow:0 1px 2px rgba(0,0,0,.04); overflow:hidden; }
     .pub-accent{ width:6px; background:var(--tone); }
     .tone-paper{ --tone: var(--paper); }
     .tone-dataset{ --tone: var(--dataset); }
-    .tone-code{ --tone: var(--code); }
     .tone-metric{ --tone: var(--metric); }
-    .tone-talk{ --tone: var(--talk); }
-    .pub-actions a{ display:inline-flex; align-items:center; gap:.375rem; border:1px solid var(--border); padding:.25rem .5rem; border-radius:9999px; font-size:.75rem; }
-    .pub-actions svg{ width:16px; height:16px; }
+    /* colored action pills */
+    .pill{ display:inline-flex; align-items:center; gap:.4rem; padding:.25rem .6rem; border-radius:9999px; font-size:.75rem; border:1px solid; font-weight:600; }
+    .pill svg{ width:16px; height:16px; }
+    .pill-website{ color:#1d4ed8; background:rgba(29,78,216,.1); border-color:rgba(29,78,216,.25); }
+    .pill-pdf{ color:#b45309; background:rgba(180,83,9,.12); border-color:rgba(180,83,9,.28); }
+    .pill-arxiv{ color:#dc2626; background:rgba(220,38,38,.1); border-color:rgba(220,38,38,.25); }
+    .pill-github{ color:#111827; background:rgba(17,24,39,.08); border-color:rgba(17,24,39,.2); }
+    [data-theme='dark'] .pill-website{ color:#60a5fa; background:rgba(96,165,250,.15); border-color:rgba(96,165,250,.35); }
+    [data-theme='dark'] .pill-pdf{ color:#f59e0b; background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.28); }
+    [data-theme='dark'] .pill-arxiv{ color:#f87171; background:rgba(248,113,113,.12); border-color:rgba(248,113,113,.28); }
+    [data-theme='dark'] .pill-github{ color:#e5e7eb; background:rgba(229,231,235,.08); border-color:rgba(229,231,235,.2); }
+    .author a{ color:#1d4ed8; font-weight:600; }
+    [data-theme='dark'] .author a{ color:#60a5fa; }
+    /* tag style for compact skills */
+    .tag{ display:inline-block; padding:.32rem .6rem; border-radius:9999px; font-size:.75rem; line-height:1; border:1px solid var(--border); background:rgba(2,6,23,.05); margin:.25rem .35rem 0 0; white-space:nowrap; }
+    [data-theme='dark'] .tag{ background:rgba(255,255,255,.06); }
   </style>
   <script>
     (function(){
@@ -54,25 +62,23 @@
 </head>
 <body class="text-gray-800">
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-white focus:text-gray-900 focus:px-3 focus:py-2 focus:rounded-md focus:shadow">Skip to content</a>
-  <div id="scrollProgress"></div>
-  <button id="backToTop" type="button" aria-label="Back to top" class="hidden fixed bottom-6 right-6 rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-3 py-2 shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">↑</button>
 
   <div class="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12 py-10">
-    <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-x-16">
+    <div class="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-x-16">
 
       <!-- SIDEBAR -->
-      <aside class="lg:sticky top-10 h-fit">
+      <aside class="lg:sticky top-10 h-fit space-y-6">
         <img src="https://placehold.co/400x400/e0e0e0/333?text=Your+Photo" alt="Portrait of Harsh Dubey" class="rounded-lg shadow w-full" width="400" height="400" loading="eager" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e0e0e0/333?text=Image+Not+Found';"/>
 
-        <div class="mt-6">
+        <div>
           <p class="text-2xl font-bold text-gray-900">Harsh Dubey</p>
           <p class="text-sm text-gray-600 mt-1">AI Researcher at SDSU's MINT Lab</p>
           <p class="text-sm text-gray-600">Video comprehension • Evaluation metrics • Multimodal AI</p>
         </div>
 
-        <div class="mt-4 flex items-center gap-3" aria-label="Social links">
+        <div class="flex items-center gap-3" aria-label="Social links">
           <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="https://github.com/hdubey-debug?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="text-gray-800"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="text-gray-800"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0  0 0 12 .5Z"/></svg>
           </a>
           <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="#" aria-label="Google Scholar">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="22" height="22" fill="currentColor" class="text-gray-800"><path d="M320 32 32 224l288 160 288-160L320 32zm0 352-160-89.1V384c0 70.7 71.6 128 160 128s160-57.3 160-128v-89.1L320 384z"/></svg>
@@ -83,23 +89,46 @@
           <button id="themeToggle" type="button" class="ml-auto inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded border border-[color:var(--border)] bg-[color:var(--card)] hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" aria-label="Toggle theme">🌙 / ☀️</button>
         </div>
 
-        <hr class="my-6 border-[color:var(--border)]" />
+        <!-- SKILLS: Two stacked groups with tags -->
+        <section aria-label="Skills" class="text-sm">
+          <h3 class="font-semibold text-gray-800 mb-2">Skills</h3>
+          <div class="skill-group">
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-gray-500">AI & Research</h4>
+            <div class="mt-2">
+              <span class="tag">Multimodal video understanding</span>
+              <span class="tag">Long‑video modeling</span>
+              <span class="tag">Vision‑Language (VLM)</span>
+              <span class="tag">LLM + textual memory</span>
+              <span class="tag">Key‑frame reasoning</span>
+              <span class="tag">Evaluation metrics (VCS, VAD‑Score)</span>
+              <span class="tag">Dataset design (CLIP‑CC)</span>
+              <span class="tag">Recurrent multimodal (RMM)</span>
+              <span class="tag">TensorFlow / Keras</span>
+              <span class="tag">Experimentation & benchmarking</span>
+            </div>
+          </div>
 
-        <!-- Sidebar Nav -->
-        <nav aria-label="Sections" class="text-sm">
-          <ul class="space-y-1 border-l-2 border-[color:var(--border)]">
-            <li><a href="#about" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">About</a></li>
-            <li><a href="#experience" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Experience</a></li>
-            <li><a href="#publications" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Publications</a></li>
-            <li><a href="#software" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Software</a></li>
-            <li><a href="#projects" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Projects</a></li>
-            <li><a href="#news" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">News</a></li>
-            <li><a href="#skills" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Skills</a></li>
-            <li><a href="#contact" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Contact</a></li>
-          </ul>
-        </nav>
+          <hr class="my-4 border-[color:var(--border)]" />
 
-        <hr class="my-6 border-[color:var(--border)]" />
+          <div class="skill-group">
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-gray-500">Firmware & Embedded</h4>
+            <div class="mt-2">
+              <span class="tag">C/C++ (embedded)</span>
+              <span class="tag">Contiki‑NG • FreeRTOS</span>
+              <span class="tag">ARM Cortex‑M • PIC</span>
+              <span class="tag">Silicon Labs EFR32BG</span>
+              <span class="tag">IEEE 802.15.4 (2.4 GHz/900 MHz)</span>
+              <span class="tag">LoRaWAN • RPMA</span>
+              <span class="tag">LwM2M/CoAP • MQTT</span>
+              <span class="tag">UART • I²C • SPI • USB</span>
+              <span class="tag">Node‑RED • Grafana • InfluxDB • Prometheus • MySQL • Nginx</span>
+              <span class="tag">FPGA Verilog • ModelSim • Quartus • Lattice</span>
+              <span class="tag">Oscilloscope • Logic Analyzer • Multimeter</span>
+            </div>
+          </div>
+        </section>
+
+        <hr class="border-[color:var(--border)]" />
 
         <!-- Quick contact -->
         <div class="space-y-3 text-sm">
@@ -118,7 +147,7 @@
         </div>
       </aside>
 
-      <!-- MAIN -->
+      <!-- MAIN (unchanged from v7) -->
       <main id="main" class="mt-8 lg:mt-0">
         <!-- About -->
         <section id="about" class="scroll-mt-24">
@@ -129,7 +158,7 @@
           </p>
         </section>
 
-        <!-- Experience (with bolded keywords everywhere) -->
+        <!-- Experience (keywords bolded throughout) -->
         <section id="experience" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Selected Experience</h2>
           <div class="space-y-8 mt-6">
@@ -213,7 +242,7 @@
           </div>
         </section>
 
-        <!-- Publications (image left, content right, TL;DR badge, actions) -->
+        <!-- Publications (image left, TL;DR, colored action pills, blue authors) -->
         <section id="publications" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Publications</h2>
           <div class="mt-6 space-y-4">
@@ -227,7 +256,7 @@
                   </div>
                   <div>
                     <h3 class="text-lg font-semibold">Leveraging Textual Memory and Key Frame Reasoning for Full Video Understanding Using Off‑the‑Shelf LLMs and VLMs <span class="opacity-80">(Student Abstract)</span></h3>
-                    <p class="text-sm text-gray-600 mt-1">
+                    <p class="text-sm author mt-1">
                       <a href="#" class="link-underline">Harsh Dubey</a>, <a href="#" class="link-underline">Chulwoo Pack</a>
                     </p>
                     <p class="text-sm text-gray-600 mt-1">AAAI 2025</p>
@@ -235,16 +264,22 @@
                       <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
                       <span class="text-sm text-[color:var(--muted)]">Combine a <strong>VLM</strong> with an <strong>LLM</strong> plus <strong>textual memory</strong> and <strong>key‑frame reasoning</strong> for fine‑grained, long‑video understanding; introduce <strong>VAD‑Score</strong>; competitive results on <strong>DREAM‑1K</strong>.</span>
                     </div>
-                    <div class="pub-actions mt-3 flex flex-wrap gap-2">
-                      <a href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener" title="AAAI page">
-                        <!-- website icon -->
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a class="pill pill-website" href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1 4-9 15.3 15.3 0 0 1 4-9Z"/></svg>
                         Website
                       </a>
-                      <a href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener" title="PDF">
-                        <!-- pdf icon -->
+                      <a class="pill pill-pdf" href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>
                         PDF
+                      </a>
+                      <a class="pill pill-github" href="#" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>
+                        Code
+                      </a>
+                      <a class="pill pill-arxiv" href="#" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19h16M7 19V5h3l2 3 2-3h3v14"/></svg>
+                        arXiv
                       </a>
                     </div>
                   </div>
@@ -252,7 +287,7 @@
               </div>
             </article>
 
-            <!-- Placeholder publication (copy+edit for more) -->
+            <!-- Another publication placeholder -->
             <article class="pub-card tone-paper">
               <div class="flex">
                 <div class="pub-accent"></div>
@@ -262,17 +297,17 @@
                   </div>
                   <div>
                     <h3 class="text-lg font-semibold">Your Next Paper Title</h3>
-                    <p class="text-sm text-gray-600 mt-1">Author A, Author B, Author C</p>
+                    <p class="text-sm author mt-1"><a href="#" class="link-underline">Author A</a>, <a href="#" class="link-underline">Author B</a>, <a href="#" class="link-underline">Author C</a></p>
                     <p class="text-sm text-gray-600 mt-1">Venue · Year</p>
                     <div class="mt-2 inline-flex items-center gap-2">
                       <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
                       <span class="text-sm text-[color:var(--muted)]">One‑line summary of the contribution.</span>
                     </div>
-                    <div class="pub-actions mt-3 flex flex-wrap gap-2">
-                      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
-                      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
-                      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/></svg>arXiv</a>
-                      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 19V6l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>GitHub</a>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      <a class="pill pill-website" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
+                      <a class="pill pill-pdf" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                      <a class="pill pill-github" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>Code</a>
+                      <a class="pill pill-arxiv" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19h16M7 19V5h3l2 3 2-3h3v14"/></svg>arXiv</a>
                     </div>
                   </div>
                 </div>
@@ -281,7 +316,7 @@
           </div>
         </section>
 
-        <!-- Software (2-column like Projects) -->
+        <!-- Software (2-col grid) -->
         <section id="software" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Software</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -296,10 +331,10 @@
                     <span class="badge">Metric</span>
                   </div>
                   <p class="text-sm text-[color:var(--muted)] mt-2">Automated scoring for <strong>long‑form video descriptions</strong> with precision/recall/F1 across <strong>events</strong>, <strong>subjects</strong>, and <strong>objects</strong>; includes reference implementation and examples.</p>
-                  <div class="pub-actions mt-3 flex flex-wrap gap-2">
-                    <a href="https://github.com/Multimodal-Intelligence-Lab/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
-                    <a href="https://multimodal-intelligence-lab.github.io/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
-                    <a href="#" title="Add PyPI link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 1l3 6 6 .9-4.5 4.4 1 6.2L12 16l-5.6 2.5 1-6.2L3 7.9 9 7z"/></svg>PyPI</a>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <a class="pill pill-github" href="https://github.com/Multimodal-Intelligence-Lab/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                    <a class="pill pill-website" href="https://multimodal-intelligence-lab.github.io/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1 4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
+                    <a class="pill pill-website" href="#" title="Add PyPI link">PyPI</a>
                   </div>
                 </div>
               </div>
@@ -315,8 +350,8 @@
                     <span class="badge">Dataset</span>
                   </div>
                   <p class="text-sm text-[color:var(--muted)] mt-2">A dataset for <strong>contrastive captioning</strong> with CLIP‑aligned supervision; used to train/test <strong>recurrent multimodal</strong> architectures for long videos.</p>
-                  <div class="pub-actions mt-3 flex flex-wrap gap-2">
-                    <a href="https://github.com/Multimodal-Intelligence-Lab/CLIP-CC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <a class="pill pill-github" href="https://github.com/Multimodal-Intelligence-Lab/CLIP-CC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
                   </div>
                 </div>
               </div>
@@ -324,7 +359,7 @@
           </div>
         </section>
 
-        <!-- Projects (unchanged, still 2-col) -->
+        <!-- Projects (2-col) -->
         <section id="projects" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Projects</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -335,9 +370,9 @@
                 <p class="text-xs text-gray-500 mt-1">Senior Design Project at SDSU</p>
                 <p class="text-sm text-gray-600 mt-2 flex-grow">Designed a dongle to fetch and reconfigure a display controller’s network settings without a network, using an ARM Cortex processor and a C# driver.</p>
                 <div class="mt-4">
-                  <span class="chip text-gray-700">C#</span>
-                  <span class="chip text-gray-700">ARM Cortex</span>
-                  <span class="chip text-gray-700">Firmware</span>
+                  <span class="badge">C#</span>
+                  <span class="badge">ARM Cortex</span>
+                  <span class="badge">Firmware</span>
                 </div>
               </div>
             </article>
@@ -348,9 +383,9 @@
                 <p class="text-xs text-gray-500 mt-1">Senior Design Project at SDSU</p>
                 <p class="text-sm text-gray-600 mt-2 flex-grow">Developed a gaming system that adapts to a player’s brain status using EEG signals, featuring a custom emotion model and a 2D game built in Unity.</p>
                 <div class="mt-4">
-                  <span class="chip text-gray-700">Unity</span>
-                  <span class="chip text-gray-700">C#</span>
-                  <span class="chip text-gray-700">EEG</span>
+                  <span class="badge">Unity</span>
+                  <span class="badge">C#</span>
+                  <span class="badge">EEG</span>
                 </div>
               </div>
             </article>
@@ -389,49 +424,6 @@
           </div>
         </section>
 
-        <!-- Skills -->
-        <section id="skills" class="mt-12 scroll-mt-24">
-          <h2 class="text-2xl font-semibold text-gray-900">Skills</h2>
-          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <h3 class="text-sm font-semibold text-gray-700">Programming</h3>
-              <p class="mt-2">
-                <span class="chip">C/C++</span> <span class="chip">JavaScript</span> <span class="chip">PIC Assembly</span>
-              </p>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-gray-700">Systems & OS</h3>
-              <p class="mt-2">
-                <span class="chip">Contiki‑NG</span> <span class="chip">FreeRTOS</span> <span class="chip">Linux</span>
-              </p>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-gray-700">Wireless & Protocols</h3>
-              <p class="mt-2">
-                <span class="chip">802.15.4</span> <span class="chip">LoRaWAN</span> <span class="chip">MQTT</span> <span class="chip">LwM2M/CoAP</span> <span class="chip">UART/I2C/SPI/USB</span>
-              </p>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-gray-700">Tooling & Data</h3>
-              <p class="mt-2">
-                <span class="chip">Node‑RED</span> <span class="chip">Grafana</span> <span class="chip">InfluxDB</span> <span class="chip">Prometheus</span> <span class="chip">MySQL</span> <span class="chip">Nginx</span>
-              </p>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-gray-700">Hardware</h3>
-              <p class="mt-2">
-                <span class="chip">ARM Cortex</span> <span class="chip">EFR32BG</span> <span class="chip">Verilog/FPGA</span> <span class="chip">Oscilloscope/LA/Multimeter</span>
-              </p>
-            </div>
-            <div>
-              <h3 class="text-sm font-semibold text-gray-700">AI/Research</h3>
-              <p class="mt-2">
-                <span class="chip">Video Comprehension</span> <span class="chip">Evaluation Metrics</span> <span class="chip">TensorFlow/Keras</span>
-              </p>
-            </div>
-          </div>
-        </section>
-
         <!-- Contact -->
         <section id="contact" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Contact</h2>
@@ -453,25 +445,7 @@
       localStorage.setItem('theme', next);
     });
 
-    const progress = document.getElementById('scrollProgress');
-    window.addEventListener('scroll', () => {
-      const e = document.documentElement; const scrolled = (e.scrollTop || document.body.scrollTop);
-      const height = (e.scrollHeight - e.clientHeight); const w = Math.min(100, (scrolled / height) * 100);
-      progress.style.width = w + '%';
-      document.getElementById('backToTop').classList.toggle('hidden', window.scrollY < 800);
-    }, {passive:true});
-
-    const sectionIds = ['about','experience','publications','software','projects','news','skills','contact'];
-    const links = Array.from(document.querySelectorAll('aside nav a'));
-    const map = new Map(sectionIds.map(id => [id, links.find(a => a.getAttribute('href') === '#' + id)]));
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const id = entry.target.id; const link = map.get(id); if(!link) return;
-        if (entry.isIntersecting) { links.forEach(a => a.classList.remove('nav-active')); link.classList.add('nav-active'); }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
-    sectionIds.forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
-
+    // news scroller
     const track = document.getElementById('newsTrack');
     document.getElementById('newsPrev')?.addEventListener('click', () => track.scrollBy({left: -320, behavior: 'smooth'}));
     document.getElementById('newsNext')?.addEventListener('click', () => track.scrollBy({left: 320, behavior: 'smooth'}));
