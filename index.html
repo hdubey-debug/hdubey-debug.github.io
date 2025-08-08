@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harsh Dubey — AI Researcher</title>
+  <meta name="description" content="Harsh Dubey — AI researcher focused on video comprehension, evaluation metrics, and multimodal systems. Firmware & embedded systems background." />
+  <meta property="og:title" content="Harsh Dubey — AI Researcher" />
+  <meta property="og:description" content="Video comprehension • Evaluation metrics • Multimodal systems" />
+  <meta property="og:type" content="website" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{ 
+      --bg:#f9fafb; --text:#0f172a; --muted:#374151; --card:#ffffff; --border:#e5e7eb; --accent:#2563eb; 
+      --paper:#1d4ed8; --dataset:#059669; --code:#7c3aed; --metric:#d97706; --talk:#db2777;
+    }
+    [data-theme='dark']{ 
+      --bg:#0b1220; --text:#e5e7eb; --muted:#9ca3af; --card:#111827; --border:#1f2937; --accent:#60a5fa; 
+      --paper:#60a5fa; --dataset:#34d399; --code:#a78bfa; --metric:#fbbf24; --talk:#f472b6;
+    }
+    html, body { height: 100%; }
+    body { font-family:'Lato', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); }
+    h1,h2,h3,h4,h5,h6 { font-family:'Montserrat', ui-sans-serif, system-ui; }
+    .no-scrollbar::-webkit-scrollbar{ display:none; } .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
+    #scrollProgress{ position: fixed; inset:0 auto auto 0; height:3px; width:0; background:var(--accent); z-index:50; }
+    .link-underline { position: relative; }
+    .link-underline::after { content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .2s ease; }
+    .link-underline:hover::after, .link-underline:focus-visible::after { transform:scaleX(1); }
+    .nav-active { border-left-color: var(--accent); color: var(--text) !important; font-weight:600; }
+    .badge { display:inline-flex; align-items:center; gap:.375rem; border:1px solid var(--border); border-radius:9999px; padding:.125rem .5rem; font-size:.75rem; }
+    .chip { display:inline-block; background:rgba(2,6,23,.05); border-radius:9999px; padding:.25rem .5rem; font-size:.75rem; margin:.25rem .25rem 0 0; }
+    [data-theme='dark'] .chip{ background:rgba(255,255,255,.06); }
+    /* publication cards like the reference */
+    .pub-card{ border:1px solid var(--border); background:var(--card); border-radius:14px; box-shadow:0 1px 2px rgba(0,0,0,.04); overflow:hidden; }
+    .pub-accent{ width:6px; background:var(--tone); }
+    .tone-paper{ --tone: var(--paper); }
+    .tone-dataset{ --tone: var(--dataset); }
+    .tone-code{ --tone: var(--code); }
+    .tone-metric{ --tone: var(--metric); }
+    .tone-talk{ --tone: var(--talk); }
+    .pub-actions a{ display:inline-flex; align-items:center; gap:.375rem; border:1px solid var(--border); padding:.25rem .5rem; border-radius:9999px; font-size:.75rem; }
+    .pub-actions svg{ width:16px; height:16px; }
+  </style>
+  <script>
+    (function(){
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+</head>
+<body class="text-gray-800">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-white focus:text-gray-900 focus:px-3 focus:py-2 focus:rounded-md focus:shadow">Skip to content</a>
+  <div id="scrollProgress"></div>
+  <button id="backToTop" type="button" aria-label="Back to top" class="hidden fixed bottom-6 right-6 rounded-full border border-[color:var(--border)] bg-[color:var(--card)] px-3 py-2 shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">↑</button>
+
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12 py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-x-16">
+
+      <!-- SIDEBAR -->
+      <aside class="lg:sticky top-10 h-fit">
+        <img src="https://placehold.co/400x400/e0e0e0/333?text=Your+Photo" alt="Portrait of Harsh Dubey" class="rounded-lg shadow w-full" width="400" height="400" loading="eager" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e0e0e0/333?text=Image+Not+Found';"/>
+
+        <div class="mt-6">
+          <p class="text-2xl font-bold text-gray-900">Harsh Dubey</p>
+          <p class="text-sm text-gray-600 mt-1">AI Researcher at SDSU's MINT Lab</p>
+          <p class="text-sm text-gray-600">Video comprehension • Evaluation metrics • Multimodal AI</p>
+        </div>
+
+        <div class="mt-4 flex items-center gap-3" aria-label="Social links">
+          <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="https://github.com/hdubey-debug?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="text-gray-800"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>
+          </a>
+          <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="#" aria-label="Google Scholar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="22" height="22" fill="currentColor" class="text-gray-800"><path d="M320 32 32 224l288 160 288-160L320 32zm0 352-160-89.1V384c0 70.7 71.6 128 160 128s160-57.3 160-128v-89.1L320 384z"/></svg>
+          </a>
+          <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="#" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="text-gray-800"><path d="M18.2 2H21l-6.5 7.5L22.5 22H16l-4.6-6-5.3 6H3.3l7-8-6.7-8h6l4.1 5.4L18.2 2ZM16.9 20h1.7L7.2 4H5.4l11.5 16Z"/></svg>
+          </a>
+          <button id="themeToggle" type="button" class="ml-auto inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded border border-[color:var(--border)] bg-[color:var(--card)] hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" aria-label="Toggle theme">🌙 / ☀️</button>
+        </div>
+
+        <hr class="my-6 border-[color:var(--border)]" />
+
+        <!-- Sidebar Nav -->
+        <nav aria-label="Sections" class="text-sm">
+          <ul class="space-y-1 border-l-2 border-[color:var(--border)]">
+            <li><a href="#about" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">About</a></li>
+            <li><a href="#experience" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Experience</a></li>
+            <li><a href="#publications" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Publications</a></li>
+            <li><a href="#software" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Software</a></li>
+            <li><a href="#projects" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Projects</a></li>
+            <li><a href="#news" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">News</a></li>
+            <li><a href="#skills" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Skills</a></li>
+            <li><a href="#contact" class="block pl-3 py-1 text-gray-600 hover:text-[color:var(--accent)] link-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">Contact</a></li>
+          </ul>
+        </nav>
+
+        <hr class="my-6 border-[color:var(--border)]" />
+
+        <!-- Quick contact -->
+        <div class="space-y-3 text-sm">
+          <div class="flex items-center text-gray-600">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <span>had7143@gmail.com</span>
+          </div>
+          <div class="flex items-center text-gray-600">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            <span>Cary, NC</span>
+          </div>
+          <div class="flex items-center text-gray-600">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <a href="#" class="hover:text-[color:var(--accent)] transition-colors link-underline">CV (PDF)</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main id="main" class="mt-8 lg:mt-0">
+        <!-- About -->
+        <section id="about" class="scroll-mt-24">
+          <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Harsh Dubey</h1>
+          <p class="mt-5 max-w-prose text-[color:var(--muted)] leading-relaxed">
+            I’m an AI researcher at SDSU’s MINT Lab. My work focuses on building robust multimodal systems and evaluation methods for
+            <span class="font-semibold">video comprehension</span>—including long‑form description scoring and narrative alignment. I also have experience in firmware and embedded systems for wireless networks and IoT.
+          </p>
+        </section>
+
+        <!-- Experience (with bolded keywords everywhere) -->
+        <section id="experience" class="mt-12 scroll-mt-24">
+          <h2 class="text-2xl font-semibold text-gray-900">Selected Experience</h2>
+          <div class="space-y-8 mt-6">
+            <!-- MINT Lab -->
+            <article class="flex gap-4">
+              <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[color:var(--card)] border border-[color:var(--border)] flex items-center justify-center overflow-hidden">
+                <img src="https://logo.clearbit.com/sdstate.edu" alt="SDSU / MINT Lab logo" class="h-8 w-8 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/64x64?text=M';"/>
+              </div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <p class="font-semibold text-gray-900">AI Researcher</p>
+                  <span class="badge">SDSU — MINT Lab</span>
+                  <span class="text-xs text-gray-500">Fall 2024 – Present</span>
+                </div>
+                <p class="text-sm text-gray-700 mt-1">Researching <strong>video understanding</strong> with <strong>VLM+LLM</strong> systems, <strong>evaluation metrics</strong>, and <strong>long‑video architectures</strong>.</p>
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
+                  <li><strong>AAAI‑25 Student Abstract (1st‑author)</strong>: designed a <strong>textual memory</strong> + <strong>key‑frame reasoning</strong> pipeline pairing a VLM with an LLM; proposed <strong>VAD‑Score</strong> to evaluate <strong>events</strong>, <strong>subjects</strong>, and <strong>objects</strong>; competitive results on <strong>DREAM‑1K</strong>.</li>
+                  <li><strong>Video Comprehension Score (VCS)</strong>: authored a metric and reference implementation for <strong>long‑form video description</strong> quality; docs and examples provided.</li>
+                  <li><strong>CLIP‑CC dataset & Recurrent Multimodal Model (RMM)</strong>: equal‑contrib on dataset creation; designed the <strong>RMM</strong> for <strong>long‑video processing</strong>.</li>
+                </ul>
+              </div>
+            </article>
+            <!-- Amazon -->
+            <article class="flex gap-4">
+              <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[color:var(--card)] border border-[color:var(--border)] flex items-center justify-center overflow-hidden">
+                <img src="https://logo.clearbit.com/amazon.com" alt="Amazon logo" class="h-8 w-8 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/64x64?text=A';"/>
+              </div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <p class="font-semibold text-gray-900">Wireless Software Engineer</p>
+                  <span class="badge">Amazon — Just Walk Out</span>
+                  <span class="text-xs text-gray-500">Jul 2022 – Feb 2023</span>
+                </div>
+                <p class="text-sm text-gray-700 mt-1">Designed, developed, and implemented software for wireless networks in Just Walk Out, spanning <strong>embedded libraries</strong>, <strong>edge‑device tooling</strong>, and <strong>performance telemetry</strong>.</p>
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
+                  <li>Built a <strong>Contiki‑NG</strong> C/C++ <strong>library</strong> and application on <strong>EFR32BG</strong> to create a Frugal Event Detection Device (FRED). Exposed APIs for efficient data readout, <strong>timestamping</strong>, <strong>packetization</strong>, and transmission; app sent <strong>LwM2M/CoAP</strong> messages over high‑speed <strong>UART</strong> via <strong>tunslip6</strong> to a server.</li>
+                  <li>Created a <strong>load‑cell validation (LCV)</strong> library for an <strong>IEEE 802.15.4 2.4 GHz</strong> network coordinator (Contiki‑NG, C/C++). Collected ADC samples, sorted, computed medians, and published results for <strong>smart‑shelf</strong> install validation.</li>
+                  <li>Developed a debug <strong>CLI</strong> for an 802.15.4 edge device’s <strong>deep‑sleep</strong> mode: <strong>9,600</strong> baud while asleep and <strong>115,200</strong> baud in normal mode.</li>
+                  <li>Shipped <strong>Node‑RED</strong> dashboards and unit tests (JavaScript) to monitor <strong>packet loss</strong>, <strong>throughput</strong>, and <strong>latency</strong>.</li>
+                </ul>
+              </div>
+            </article>
+            <!-- Trilliant -->
+            <article class="flex gap-4">
+              <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[color:var(--card)] border border-[color:var(--border)] flex items-center justify-center overflow-hidden">
+                <img src="https://logo.clearbit.com/trilliant.com" alt="Trilliant Networks logo" class="h-8 w-8 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/64x64?text=T';"/>
+              </div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <p class="font-semibold text-gray-900">Firmware Engineer — Wireless Networks</p>
+                  <span class="badge">Trilliant Networks</span>
+                  <span class="text-xs text-gray-500">Jul 2021 – Jul 2022 & Feb 2023 – Present</span>
+                </div>
+                <p class="text-sm text-gray-700 mt-1">Delivered firmware features and observability for utility IoT across <strong>900 MHz/802.15.4</strong> NICs and meter endpoints.</p>
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
+                  <li>Developed <strong>C/C++</strong> features for <strong>Spectra ANSI meter NIC</strong> on <strong>RPMA 900 MHz (802.15.4)</strong> enabling <strong>OTA</strong>/serial table access.</li>
+                  <li>Led <strong>water MIU</strong> product work: vendor firmware validation, <strong>unit tests</strong>, and <strong>driver integration</strong> on RPMA NIC.</li>
+                  <li>Built <strong>Node‑RED</strong> dashboards, remote‑control apps, and Linux server setups (<strong>InfluxDB</strong>, <strong>Prometheus</strong>, <strong>MySQL</strong>, <strong>Nginx</strong>, <strong>Grafana</strong>).</li>
+                </ul>
+              </div>
+            </article>
+            <!-- SDSU -->
+            <article class="flex gap-4">
+              <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[color:var(--card)] border border-[color:var(--border)] flex items-center justify-center overflow-hidden">
+                <img src="https://logo.clearbit.com/sdstate.edu" alt="South Dakota State University logo" class="h-8 w-8 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/64x64?text=S';"/>
+              </div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <p class="font-semibold text-gray-900">Electrical Engineer — Wireless Embedded Systems IoT</p>
+                  <span class="badge">SDSU — ABE</span>
+                  <span class="text-xs text-gray-500">Jan 2020 – May 2020 & Dec 2020 – Jul 2021</span>
+                </div>
+                <p class="text-sm text-gray-700 mt-1">Prototyped an end‑to‑end <strong>LoRaWAN</strong> monitoring system for swine facilities with gateways, cloud, and web UI.</p>
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
+                  <li>Built non‑invasive sensor nodes (<strong>Arduino Uno/Mega</strong> + LoRaWAN shield) and a <strong>C#</strong> serial interface.</li>
+                  <li>Configured <strong>The Things Network (TTN)</strong> gateway and implemented <strong>Firebase</strong>‑backed UI (HTML/CSS/JS).</li>
+                  <li>Deployed data pipeline: gateway → <strong>Firebase</strong> → browser dashboards.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Publications (image left, content right, TL;DR badge, actions) -->
+        <section id="publications" class="mt-12 scroll-mt-24">
+          <h2 class="text-2xl font-semibold text-gray-900">Publications</h2>
+          <div class="mt-6 space-y-4">
+            <!-- AAAI 2025 Student Abstract -->
+            <article class="pub-card tone-paper">
+              <div class="flex">
+                <div class="pub-accent"></div>
+                <div class="grid md:grid-cols-[280px_1fr] gap-4 p-4 w-full">
+                  <div>
+                    <img src="https://placehold.co/560x360/0ea5e9/111?text=AAAI+2025" alt="AAAI 2025" class="rounded-lg w-full h-[180px] object-cover" width="560" height="360" loading="lazy"/>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold">Leveraging Textual Memory and Key Frame Reasoning for Full Video Understanding Using Off‑the‑Shelf LLMs and VLMs <span class="opacity-80">(Student Abstract)</span></h3>
+                    <p class="text-sm text-gray-600 mt-1">
+                      <a href="#" class="link-underline">Harsh Dubey</a>, <a href="#" class="link-underline">Chulwoo Pack</a>
+                    </p>
+                    <p class="text-sm text-gray-600 mt-1">AAAI 2025</p>
+                    <div class="mt-2 inline-flex items-center gap-2">
+                      <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                      <span class="text-sm text-[color:var(--muted)]">Combine a <strong>VLM</strong> with an <strong>LLM</strong> plus <strong>textual memory</strong> and <strong>key‑frame reasoning</strong> for fine‑grained, long‑video understanding; introduce <strong>VAD‑Score</strong>; competitive results on <strong>DREAM‑1K</strong>.</span>
+                    </div>
+                    <div class="pub-actions mt-3 flex flex-wrap gap-2">
+                      <a href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener" title="AAAI page">
+                        <!-- website icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>
+                        Website
+                      </a>
+                      <a href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener" title="PDF">
+                        <!-- pdf icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>
+                        PDF
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Placeholder publication (copy+edit for more) -->
+            <article class="pub-card tone-paper">
+              <div class="flex">
+                <div class="pub-accent"></div>
+                <div class="grid md:grid-cols-[280px_1fr] gap-4 p-4 w-full">
+                  <div>
+                    <img src="https://placehold.co/560x360/f0e68c/333?text=Paper" alt="Paper" class="rounded-lg w-full h-[180px] object-cover" width="560" height="360" loading="lazy"/>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold">Your Next Paper Title</h3>
+                    <p class="text-sm text-gray-600 mt-1">Author A, Author B, Author C</p>
+                    <p class="text-sm text-gray-600 mt-1">Venue · Year</p>
+                    <div class="mt-2 inline-flex items-center gap-2">
+                      <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                      <span class="text-sm text-[color:var(--muted)]">One‑line summary of the contribution.</span>
+                    </div>
+                    <div class="pub-actions mt-3 flex flex-wrap gap-2">
+                      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
+                      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/></svg>arXiv</a>
+                      <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 19V6l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>GitHub</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Software (2-column like Projects) -->
+        <section id="software" class="mt-12 scroll-mt-24">
+          <h2 class="text-2xl font-semibold text-gray-900">Software</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <!-- VCS card -->
+            <article class="pub-card tone-metric">
+              <div class="flex">
+                <div class="pub-accent"></div>
+                <div class="p-4 w-full">
+                  <div class="flex items-center gap-2 text-sm font-semibold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[color:var(--metric)]" width="18" height="18"><path d="M3 3v18h18"/><path d="M7 15l3-3 4 4 5-7"/></svg>
+                    Video Comprehension Score (VCS)
+                    <span class="badge">Metric</span>
+                  </div>
+                  <p class="text-sm text-[color:var(--muted)] mt-2">Automated scoring for <strong>long‑form video descriptions</strong> with precision/recall/F1 across <strong>events</strong>, <strong>subjects</strong>, and <strong>objects</strong>; includes reference implementation and examples.</p>
+                  <div class="pub-actions mt-3 flex flex-wrap gap-2">
+                    <a href="https://github.com/Multimodal-Intelligence-Lab/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                    <a href="https://multimodal-intelligence-lab.github.io/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
+                    <a href="#" title="Add PyPI link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 1l3 6 6 .9-4.5 4.4 1 6.2L12 16l-5.6 2.5 1-6.2L3 7.9 9 7z"/></svg>PyPI</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <!-- CLIP-CC card -->
+            <article class="pub-card tone-dataset">
+              <div class="flex">
+                <div class="pub-accent"></div>
+                <div class="p-4 w-full">
+                  <div class="flex items-center gap-2 text-sm font-semibold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[color:var(--dataset)]" width="18" height="18"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
+                    CLIP‑CC
+                    <span class="badge">Dataset</span>
+                  </div>
+                  <p class="text-sm text-[color:var(--muted)] mt-2">A dataset for <strong>contrastive captioning</strong> with CLIP‑aligned supervision; used to train/test <strong>recurrent multimodal</strong> architectures for long videos.</p>
+                  <div class="pub-actions mt-3 flex flex-wrap gap-2">
+                    <a href="https://github.com/Multimodal-Intelligence-Lab/CLIP-CC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Projects (unchanged, still 2-col) -->
+        <section id="projects" class="mt-12 scroll-mt-24">
+          <h2 class="text-2xl font-semibold text-gray-900">Projects</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <article class="border border-[color:var(--border)] rounded-lg bg-[color:var(--card)] shadow-sm overflow-hidden flex flex-col">
+              <img src="https://placehold.co/600x400/b0c4de/333?text=Project+Visual" alt="Network Configuration Dongle visual" class="w-full h-40 object-cover" width="600" height="400" loading="lazy"/>
+              <div class="p-4 flex flex-col flex-grow">
+                <h3 class="font-semibold text-gray-800"><a href="#" class="link-underline">Network Configuration Dongle</a></h3>
+                <p class="text-xs text-gray-500 mt-1">Senior Design Project at SDSU</p>
+                <p class="text-sm text-gray-600 mt-2 flex-grow">Designed a dongle to fetch and reconfigure a display controller’s network settings without a network, using an ARM Cortex processor and a C# driver.</p>
+                <div class="mt-4">
+                  <span class="chip text-gray-700">C#</span>
+                  <span class="chip text-gray-700">ARM Cortex</span>
+                  <span class="chip text-gray-700">Firmware</span>
+                </div>
+              </div>
+            </article>
+            <article class="border border-[color:var(--border)] rounded-lg bg-[color:var(--card)] shadow-sm overflow-hidden flex flex-col">
+              <img src="https://placehold.co/600x400/c2d4dd/333?text=Project+Visual" alt="Reactive Gaming System visual" class="w-full h-40 object-cover" width="600" height="400" loading="lazy"/>
+              <div class="p-4 flex flex-col flex-grow">
+                <h3 class="font-semibold text-gray-800"><a href="#" class="link-underline">Reactive Gaming System</a></h3>
+                <p class="text-xs text-gray-500 mt-1">Senior Design Project at SDSU</p>
+                <p class="text-sm text-gray-600 mt-2 flex-grow">Developed a gaming system that adapts to a player’s brain status using EEG signals, featuring a custom emotion model and a 2D game built in Unity.</p>
+                <div class="mt-4">
+                  <span class="chip text-gray-700">Unity</span>
+                  <span class="chip text-gray-700">C#</span>
+                  <span class="chip text-gray-700">EEG</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- News -->
+        <section id="news" class="mt-12 scroll-mt-24">
+          <h2 class="text-2xl font-semibold text-gray-900">News</h2>
+          <div class="relative mt-4">
+            <button aria-label="Previous news" id="newsPrev" class="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded bg-[color:var(--card)] border border-[color:var(--border)] shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">◂</button>
+            <div id="newsTrack" class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar">
+              <article class="snap-start min-w-[16rem] w-64 border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm">
+                <img src="https://placehold.co/400x300/0ea5e9/111?text=AAAI+2025" alt="AAAI 2025" class="w-full h-32 object-cover" width="400" height="300" loading="lazy"/>
+                <div class="p-3">
+                  <p class="text-sm text-gray-700">AAAI‑25 student abstract published: textual memory + key‑frame reasoning, and VAD‑Score.</p>
+                  <p class="text-xs text-gray-400 mt-4">Apr, 2025</p>
+                </div>
+              </article>
+              <article class="snap-start min-w-[16rem] w-64 border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm">
+                <img src="https://placehold.co/400x300/a7c7e7/333?text=News+Image" alt="News item" class="w-full h-32 object-cover" width="400" height="300" loading="lazy"/>
+                <div class="p-3">
+                  <p class="text-sm text-gray-700">Placeholder for a news item—achievement, project, or announcement.</p>
+                  <p class="text-xs text-gray-400 mt-4">Nov, 2024</p>
+                </div>
+              </article>
+              <article class="snap-start min-w-[16rem] w-64 border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm">
+                <img src="https://placehold.co/400x300/c1e1c1/333?text=News+Image" alt="News item" class="w-full h-32 object-cover" width="400" height="300" loading="lazy"/>
+                <div class="p-3">
+                  <p class="text-sm text-gray-700">Another exciting update—awards, paper acceptances, etc.</p>
+                  <p class="text-xs text-gray-400 mt-4">Jun, 2025</p>
+                </div>
+              </article>
+            </div>
+            <button aria-label="Next news" id="newsNext" class="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded bg-[color:var(--card)] border border-[color:var(--border)] shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">▸</button>
+          </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="mt-12 scroll-mt-24">
+          <h2 class="text-2xl font-semibold text-gray-900">Skills</h2>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <h3 class="text-sm font-semibold text-gray-700">Programming</h3>
+              <p class="mt-2">
+                <span class="chip">C/C++</span> <span class="chip">JavaScript</span> <span class="chip">PIC Assembly</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-gray-700">Systems & OS</h3>
+              <p class="mt-2">
+                <span class="chip">Contiki‑NG</span> <span class="chip">FreeRTOS</span> <span class="chip">Linux</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-gray-700">Wireless & Protocols</h3>
+              <p class="mt-2">
+                <span class="chip">802.15.4</span> <span class="chip">LoRaWAN</span> <span class="chip">MQTT</span> <span class="chip">LwM2M/CoAP</span> <span class="chip">UART/I2C/SPI/USB</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-gray-700">Tooling & Data</h3>
+              <p class="mt-2">
+                <span class="chip">Node‑RED</span> <span class="chip">Grafana</span> <span class="chip">InfluxDB</span> <span class="chip">Prometheus</span> <span class="chip">MySQL</span> <span class="chip">Nginx</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-gray-700">Hardware</h3>
+              <p class="mt-2">
+                <span class="chip">ARM Cortex</span> <span class="chip">EFR32BG</span> <span class="chip">Verilog/FPGA</span> <span class="chip">Oscilloscope/LA/Multimeter</span>
+              </p>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-gray-700">AI/Research</h3>
+              <p class="mt-2">
+                <span class="chip">Video Comprehension</span> <span class="chip">Evaluation Metrics</span> <span class="chip">TensorFlow/Keras</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="mt-12 scroll-mt-24">
+          <h2 class="text-2xl font-semibold text-gray-900">Contact</h2>
+          <p class="mt-3 text-sm text-gray-700">Email <a href="mailto:had7143@gmail.com" class="link-underline">had7143@gmail.com</a>, or grab my <a href="#" class="link-underline">CV (PDF)</a>.</p>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer class="mt-16 py-6 border-t border-[color:var(--border)] text-sm text-gray-500 text-center">© <span id="y"></span> Harsh Dubey. All rights reserved.</footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('themeToggle');
+    toggle?.addEventListener('click', () => {
+      const cur = document.documentElement.dataset.theme;
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    });
+
+    const progress = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const e = document.documentElement; const scrolled = (e.scrollTop || document.body.scrollTop);
+      const height = (e.scrollHeight - e.clientHeight); const w = Math.min(100, (scrolled / height) * 100);
+      progress.style.width = w + '%';
+      document.getElementById('backToTop').classList.toggle('hidden', window.scrollY < 800);
+    }, {passive:true});
+
+    const sectionIds = ['about','experience','publications','software','projects','news','skills','contact'];
+    const links = Array.from(document.querySelectorAll('aside nav a'));
+    const map = new Map(sectionIds.map(id => [id, links.find(a => a.getAttribute('href') === '#' + id)]));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id; const link = map.get(id); if(!link) return;
+        if (entry.isIntersecting) { links.forEach(a => a.classList.remove('nav-active')); link.classList.add('nav-active'); }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+    sectionIds.forEach(id => { const el = document.getElementById(id); if (el) io.observe(el); });
+
+    const track = document.getElementById('newsTrack');
+    document.getElementById('newsPrev')?.addEventListener('click', () => track.scrollBy({left: -320, behavior: 'smooth'}));
+    document.getElementById('newsNext')?.addEventListener('click', () => track.scrollBy({left: 320, behavior: 'smooth'}));
+  </script>
+</body>
+</html>
