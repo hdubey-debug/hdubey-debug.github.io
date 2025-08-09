@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Harsh Dubey — AI Researcher</title>
   <meta name="description" content="Harsh Dubey — AI researcher focused on video comprehension, evaluation metrics, and multimodal systems. Firmware & embedded systems background." />
   <meta property="og:title" content="Harsh Dubey — AI Researcher" />
-  <meta property="og:description" content="Video comprehension • Evaluation metrics • Multimodal systems" />
   <meta property="og:type" content="website" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,6 +20,15 @@
       --bg:#0b1220; --text:#e5e7eb; --muted:#9ca3af; --card:#111827; --border:#1f2937; --accent:#60a5fa; 
       --paper:#60a5fa; --dataset:#34d399; --code:#a78bfa; --metric:#fbbf24; --talk:#f472b6;
     }
+    [data-theme='ochre'] {
+      --bg: #fdf6e3; --text: #654f34; --muted: #938f7a; --card: #fbf1d8; --border: #d3cbb4; --accent: #b58900;
+      --paper:#268bd2; --dataset:#859900; --code:#6c71c4; --metric:#cb4b16; --talk:#d33682;
+    }
+    [data-theme='teal'] {
+      --bg: #002b36; --text: #839496; --muted: #586e75; --card: #073642; --border: #2a4b54; --accent: #2aa198;
+      --paper:#268bd2; --dataset:#859900; --code:#6c71c4; --metric:#cb4b16; --talk:#d33682;
+    }
+
     html, body { height: 100%; }
     body { font-family:'Lato', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: var(--bg); color: var(--text); }
     h1,h2,h3,h4,h5,h6 { font-family:'Montserrat', ui-sans-serif, system-ui; }
@@ -42,27 +50,95 @@
     .pill-pdf{ color:#b45309; background:rgba(180,83,9,.12); border-color:rgba(180,83,9,.28); }
     .pill-arxiv{ color:#dc2626; background:rgba(220,38,38,.1); border-color:rgba(220,38,38,.25); }
     .pill-github{ color:#111827; background:rgba(17,24,39,.08); border-color:rgba(17,24,39,.2); }
-    [data-theme='dark'] .pill-website{ color:#60a5fa; background:rgba(96,165,250,.15); border-color:rgba(96,165,250,.35); }
-    [data-theme='dark'] .pill-pdf{ color:#f59e0b; background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.28); }
-    [data-theme='dark'] .pill-arxiv{ color:#f87171; background:rgba(248,113,113,.12); border-color:rgba(248,113,113,.28); }
-    [data-theme='dark'] .pill-github{ color:#e5e7eb; background:rgba(229,231,235,.08); border-color:rgba(229,231,235,.2); }
+    [data-theme='dark'] .pill-website, [data-theme='teal'] .pill-website { color:#60a5fa; background:rgba(96,165,250,.15); border-color:rgba(96,165,250,.35); }
+    [data-theme='dark'] .pill-pdf, [data-theme='teal'] .pill-pdf { color:#f59e0b; background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.28); }
+    [data-theme='dark'] .pill-arxiv, [data-theme='teal'] .pill-arxiv { color:#f87171; background:rgba(248,113,113,.12); border-color:rgba(248,113,113,.28); }
+    [data-theme='dark'] .pill-github, [data-theme='teal'] .pill-github { color:#e5e7eb; background:rgba(229,231,235,.08); border-color:rgba(229,231,235,.2); }
+    [data-theme='ochre'] .pill-website { color:#268bd2; background:rgba(38,139,210,.1); border-color:rgba(38,139,210,.25); }
+    [data-theme='ochre'] .pill-pdf { color:#cb4b16; background:rgba(203,75,22,.1); border-color:rgba(203,75,22,.25); }
+    [data-theme='ochre'] .pill-arxiv { color:#dc322f; background:rgba(220,50,47,.1); border-color:rgba(220,50,47,.25); }
+    [data-theme='ochre'] .pill-github { color:#654f34; background:rgba(101,79,52,.1); border-color:rgba(101,79,52,.25); }
     .author a{ color:#1d4ed8; font-weight:600; }
-    [data-theme='dark'] .author a{ color:#60a5fa; }
+    [data-theme='dark'] .author a, [data-theme='teal'] .author a { color:#60a5fa; }
+    [data-theme='ochre'] .author a { color:#b58900; }
     /* tag style for compact skills */
     .tag{ display:inline-block; padding:.32rem .6rem; border-radius:9999px; font-size:.75rem; line-height:1; border:1px solid var(--border); background:rgba(2,6,23,.05); margin:.25rem .35rem 0 0; white-space:nowrap; }
-    [data-theme='dark'] .tag{ background:rgba(255,255,255,.06); }
+    [data-theme='dark'] .tag, [data-theme='teal'] .tag { background:rgba(255,255,255,.06); }
+    [data-theme='ochre'] .tag { background:rgba(0,0,0,.04); }
     #newsTrack.grabbing { cursor: grabbing; }
     .text-justify { text-align: justify; }
+    /* Style for blurred news navigation buttons */
+    .news-nav-btn {
+      background-color: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    [data-theme='dark'] .news-nav-btn, [data-theme='teal'] .news-nav-btn {
+      background-color: rgba(17, 24, 39, 0.6);
+    }
+    [data-theme='ochre'] .news-nav-btn {
+      background-color: rgba(253, 246, 227, 0.6);
+    }
+    /* Dark mode text color overrides */
+    [data-theme='dark'] .text-gray-900, [data-theme='dark'] .text-gray-800, [data-theme='dark'] .text-gray-700, [data-theme='dark'] h3.font-semibold,
+    [data-theme='teal'] .text-gray-900, [data-theme='teal'] .text-gray-800, [data-theme='teal'] .text-gray-700, [data-theme='teal'] h3.font-semibold {
+      color: var(--text);
+    }
+    [data-theme='dark'] .text-gray-600, [data-theme='dark'] .text-gray-500, [data-theme='dark'] .text-gray-400,
+    [data-theme='teal'] .text-gray-600, [data-theme='teal'] .text-gray-500, [data-theme='teal'] .text-gray-400 {
+      color: var(--muted);
+    }
+    .news-visual {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      height: 12rem; /* h-48 */
+      color: white;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+    .news-visual svg {
+      width: 2rem;
+      height: 2rem;
+    }
+    
+    /* News Card Hover Effect */
+    .news-card {
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    }
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    [data-theme='dark'] .news-card, [data-theme='teal'] .news-card {
+       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+    }
+    [data-theme='dark'] .news-card:hover, [data-theme='teal'] .news-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+    }
+    [data-theme='ochre'] .news-card {
+       box-shadow: 0 1px 3px 0 rgba(101, 79, 52, 0.1), 0 1px 2px 0 rgba(101, 79, 52, 0.06);
+    }
+    [data-theme='ochre'] .news-card:hover {
+      box-shadow: 0 10px 15px -3px rgba(101, 79, 52, 0.1), 0 4px 6px -2px rgba(101, 79, 52, 0.05);
+    }
+
   </style>
   <script>
+    // This script sets the theme.
+    // It prioritizes a theme saved in localStorage, otherwise it defaults to 'dark'.
     (function(){
-      const saved = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+      const savedTheme = localStorage.getItem('theme');
+      document.documentElement.dataset.theme = savedTheme || 'dark';
     })();
   </script>
 </head>
-<body class="text-gray-800">
+<body>
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:bg-white focus:text-gray-900 focus:px-3 focus:py-2 focus:rounded-md focus:shadow">Skip to content</a>
 
   <div class="max-w-screen-xl mx-auto px-4 sm:px-8 lg:px-12 py-10">
@@ -74,21 +150,35 @@
 
         <div>
           <p class="text-2xl font-bold text-gray-900">Harsh Dubey</p>
-          <p class="text-sm text-gray-600 mt-1">AI Researcher at SDSU's MINT Lab</p>
-          <p class="text-sm text-gray-600">Video comprehension • Evaluation metrics • Multimodal AI</p>
+          <p class="text-sm text-gray-600 mt-1">AI Researcher</p>
+          <p class="text-sm text-gray-600">Multimodal AI • Embedded Systems</p>
         </div>
 
         <div class="flex items-center gap-3" aria-label="Social links">
           <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="https://github.com/hdubey-debug?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="text-gray-800"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0  0 0 12 .5Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0  0 0 12 .5Z"/></svg>
           </a>
           <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="#" aria-label="Google Scholar">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="22" height="22" fill="currentColor" class="text-gray-800"><path d="M320 32 32 224l288 160 288-160L320 32zm0 352-160-89.1V384c0 70.7 71.6 128 160 128s160-57.3 160-128v-89.1L320 384z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="22" height="22" fill="currentColor"><path d="M320 32 32 224l288 160 288-160L320 32zm0 352-160-89.1V384c0 70.7 71.6 128 160 128s160-57.3 160-128v-89.1L320 384z"/></svg>
           </a>
           <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="#" aria-label="Twitter">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="text-gray-800"><path d="M18.2 2H21l-6.5 7.5L22.5 22H16l-4.6-6-5.3 6H3.3l7-8-6.7-8h6l4.1 5.4L18.2 2ZM16.9 20h1.7L7.2 4H5.4l11.5 16Z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18.2 2H21l-6.5 7.5L22.5 22H16l-4.6-6-5.3 6H3.3l7-8-6.7-8h6l4.1 5.4L18.2 2ZM16.9 20h1.7L7.2 4H5.4l11.5 16Z"/></svg>
           </a>
-          <button id="themeToggle" type="button" class="ml-auto inline-flex items-center gap-2 text-sm px-3 py-1.5 rounded border border-[color:var(--border)] bg-[color:var(--card)] hover:shadow focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" aria-label="Toggle theme">🌙 / ☀️</button>
+          <!-- THEME SWITCHER -->
+          <div id="theme-switcher" class="ml-auto flex items-center gap-2 border border-[color:var(--border)] bg-[color:var(--card)] rounded-full p-1">
+            <button data-theme-value="light" aria-label="Light theme" class="p-1.5 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+            <button data-theme-value="dark" aria-label="Dark theme" class="p-1.5 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button data-theme-value="ochre" aria-label="Ochre theme" class="p-1.5 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">
+               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8C8 10 5.5 16.5 4 22c5.5-1.5 12-8 14-17-2 1-4 2-6 3z"></path><path d="M9 14c-2-1-4-4.5-5-8 3.5 1 7.5 4 9 6z"></path></svg>
+            </button>
+            <button data-theme-value="teal" aria-label="Teal theme" class="p-1.5 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z"></path></svg>
+            </button>
+          </div>
         </div>
 
         <!-- SKILLS: Two stacked groups with tags -->
@@ -155,8 +245,7 @@
         <section id="about" class="scroll-mt-24">
           <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Harsh Dubey</h1>
           <p class="mt-5 text-[color:var(--muted)] leading-relaxed text-justify">
-            I’m an AI researcher at SDSU’s MINT Lab. My work focuses on building robust multimodal systems and evaluation methods for
-            <span class="font-semibold">video comprehension</span>—including long‑form description scoring and narrative alignment. I also have experience in firmware and embedded systems for wireless networks and IoT.
+            Hi! I'm an AI researcher focused on building multimodal AI systems that are broadly useful and robust. I have a track record of leading high-impact projects from conception to deployment. At SDSU's MINT Lab, I designed and led the development of the <strong>Video Comprehension Score</strong>, <strong>Recurrent Multimodal Models</strong>, and the <strong>CLIP-CC Dataset</strong>, managing a team of three. Previously at Amazon, I led the development of the <strong>Frugal Event Detection device (FRED)</strong>, and at Trilliant, I spearheaded the creation of <strong>point-to-point wireless IoT Water Meter Devices</strong>. I hold an M.S. in Computer Science (4.0 GPA) and a B.S. in Electrical Engineering, both from South Dakota State University.
           </p>
         </section>
 
@@ -164,61 +253,81 @@
         <section id="news" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">News</h2>
           <div class="relative mt-4">
-            <button aria-label="Previous news" id="newsPrev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 p-2 rounded-full bg-[color:var(--card)] border border-[color:var(--border)] shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <button aria-label="Previous news" id="newsPrev" class="news-nav-btn absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 flex items-center gap-2 px-4 py-2 rounded-full border border-[color:var(--border)] shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] transition-all text-sm font-semibold">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              Prev
             </button>
             <div id="newsTrack" class="grid grid-flow-col auto-cols-[16rem] overflow-x-auto snap-x snap-mandatory gap-6 pb-4 no-scrollbar scroll-pl-6 cursor-grab">
               <!-- AAAI Paper -->
-              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
-                <img src="https://placehold.co/400x300/0ea5e9/ffffff?text=AAAI-25" alt="AAAI 2025 Publication" class="w-full h-48 object-cover" width="400" height="300" loading="lazy"/>
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
+                <div class="news-visual" style="background-color: #0ea5e9;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  <span>AAAI-25</span>
+                </div>
                 <div class="p-4 flex flex-col flex-grow">
                   <p class="text-sm text-gray-700 flex-grow">My first-author student abstract on video understanding, "Leveraging Textual Memory and Key Frame Reasoning," was accepted to <strong>AAAI-25</strong>.</p>
                   <p class="text-xs text-gray-400 mt-4">April 2025</p>
                 </div>
               </article>
               <!-- Joined MINT Lab -->
-              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
-                <img src="https://logo.clearbit.com/sdstate.edu" alt="SDSU Logo" class="w-full h-48 object-contain p-4 bg-gray-50" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/333?text=SDSU';"/>
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
+                 <div class="news-visual" style="background-color: #013c65;">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                  <span>MINT Lab</span>
+                </div>
                 <div class="p-4 flex flex-col flex-grow">
                   <p class="text-sm text-gray-700 flex-grow">Began my AI research journey at the <strong>MINT Lab</strong> at South Dakota State University, focusing on multimodal systems.</p>
                   <p class="text-xs text-gray-400 mt-4">Fall 2024</p>
                 </div>
               </article>
               <!-- Returned to Trilliant -->
-              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
-                <img src="https://logo.clearbit.com/trilliant.com" alt="Trilliant Logo" class="w-full h-48 object-contain p-8 bg-gray-900" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/222/eee?text=Trilliant';"/>
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
+                <div class="news-visual" style="background-color: #00a99d;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  <span>Trilliant</span>
+                </div>
                 <div class="p-4 flex flex-col flex-grow">
                   <p class="text-sm text-gray-700 flex-grow">Returned to <strong>Trilliant Networks</strong> to continue developing firmware for wireless utility networks.</p>
                   <p class="text-xs text-gray-400 mt-4">February 2023</p>
                 </div>
               </article>
               <!-- Joined Amazon -->
-              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
-                <img src="https://logo.clearbit.com/amazon.com" alt="Amazon Logo" class="w-full h-48 object-contain p-8" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/ff9900/ffffff?text=Amazon';"/>
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
+                <div class="news-visual" style="background-color: #ff9900;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                  <span>Amazon</span>
+                </div>
                 <div class="p-4 flex flex-col flex-grow">
                   <p class="text-sm text-gray-700 flex-grow">Joined <strong>Amazon's Just Walk Out</strong> team as a Wireless Software Engineer, building embedded libraries and tooling.</p>
                   <p class="text-xs text-gray-400 mt-4">July 2022</p>
                 </div>
               </article>
               <!-- Joined Trilliant -->
-               <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
-                <img src="https://logo.clearbit.com/trilliant.com" alt="Trilliant Logo" class="w-full h-48 object-contain p-8 bg-gray-900" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/222/eee?text=Trilliant';"/>
+               <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
+                <div class="news-visual" style="background-color: #00a99d;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  <span>Trilliant</span>
+                </div>
                 <div class="p-4 flex flex-col flex-grow">
                   <p class="text-sm text-gray-700 flex-grow">Started my first industry role as a Firmware Engineer at <strong>Trilliant Networks</strong>, working on IoT devices.</p>
                   <p class="text-xs text-gray-400 mt-4">July 2021</p>
                 </div>
               </article>
               <!-- Joined SDSU ABE -->
-              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
-                <img src="https://logo.clearbit.com/sdstate.edu" alt="SDSU ABE Logo" class="w-full h-48 object-contain p-4 bg-gray-50" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/333?text=SDSU';"/>
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
+                <div class="news-visual" style="background-color: #013c65;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                  <span>SDSU ABE</span>
+                </div>
                 <div class="p-4 flex flex-col flex-grow">
                   <p class="text-sm text-gray-700 flex-grow">Joined the <strong>SDSU ABE department</strong> as an Electrical Engineer for wireless embedded systems and IoT projects.</p>
                   <p class="text-xs text-gray-400 mt-4">January 2020</p>
                 </div>
               </article>
             </div>
-            <button aria-label="Next news" id="newsNext" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 p-2 rounded-full bg-[color:var(--card)] border border-[color:var(--border)] shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] transition-all">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <button aria-label="Next news" id="newsNext" class="news-nav-btn absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 flex items-center gap-2 px-4 py-2 rounded-full border border-[color:var(--border)] shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] transition-all text-sm font-semibold">
+              Next
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
           </div>
         </section>
@@ -358,7 +467,7 @@
                 <div class="pub-accent"></div>
                 <div class="grid md:grid-cols-[280px_1fr] gap-4 p-4 w-full">
                   <div>
-                    <img src="https://placehold.co/560x360/f0e68c/333?text=Paper" alt="Paper" class="rounded-lg w-full h-[180px] object-cover" width="560" height="360" loading="lazy"/>
+                    <img src="vcs.gif" alt="VCS Demo" class="rounded-lg w-full h-[180px] object-cover" width="560" height="360" loading="lazy"/>
                   </div>
                   <div>
                     <h3 class="text-lg font-semibold">Your Next Paper Title</h3>
@@ -369,7 +478,7 @@
                       <span class="text-sm text-[color:var(--muted)]">One‑line summary of the contribution.</span>
                     </div>
                     <div class="mt-3 flex flex-wrap gap-2">
-                      <a class="pill pill-website" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1-4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
+                      <a class="pill pill-website" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1 4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
                       <a class="pill pill-pdf" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
                       <a class="pill pill-github" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>Code</a>
                       <a class="pill pill-arxiv" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19h16M7 19V5h3l2 3 2-3h3v14"/></svg>arXiv</a>
@@ -470,12 +579,21 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    const toggle = document.getElementById('themeToggle');
-    toggle?.addEventListener('click', () => {
-      const cur = document.documentElement.dataset.theme;
-      const next = cur === 'dark' ? 'light' : 'dark';
-      document.documentElement.dataset.theme = next;
-      localStorage.setItem('theme', next);
+    
+    // Theme switcher logic
+    const themeSwitcher = document.getElementById('theme-switcher');
+    const buttons = themeSwitcher.querySelectorAll('button');
+
+    const setTheme = (themeName) => {
+      document.documentElement.dataset.theme = themeName;
+      localStorage.setItem('theme', themeName);
+    };
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const theme = button.dataset.themeValue;
+        setTheme(theme);
+      });
     });
 
     // news scroller
@@ -484,7 +602,7 @@
     const newsNext = document.getElementById('newsNext');
     
     if (track && newsPrev && newsNext) {
-        const scrollAmount = 280; // Corresponds to auto-cols-[16rem] + gap-6
+        const scrollAmount = 280; // Corresponds to auto-cols-[16rem] + + gap-6
         newsPrev.addEventListener('click', () => track.scrollBy({left: -scrollAmount, behavior: 'smooth'}));
         newsNext.addEventListener('click', () => track.scrollBy({left: scrollAmount, behavior: 'smooth'}));
 
