@@ -51,6 +51,8 @@
     /* tag style for compact skills */
     .tag{ display:inline-block; padding:.32rem .6rem; border-radius:9999px; font-size:.75rem; line-height:1; border:1px solid var(--border); background:rgba(2,6,23,.05); margin:.25rem .35rem 0 0; white-space:nowrap; }
     [data-theme='dark'] .tag{ background:rgba(255,255,255,.06); }
+    #newsTrack.grabbing { cursor: grabbing; }
+    .text-justify { text-align: justify; }
   </style>
   <script>
     (function(){
@@ -147,15 +149,78 @@
         </div>
       </aside>
 
-      <!-- MAIN (unchanged from v7) -->
-      <main id="main" class="mt-8 lg:mt-0">
+      <!-- MAIN CONTENT -->
+      <main id="main" class="mt-8 lg:mt-0 overflow-hidden">
         <!-- About -->
         <section id="about" class="scroll-mt-24">
           <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Harsh Dubey</h1>
-          <p class="mt-5 max-w-prose text-[color:var(--muted)] leading-relaxed">
+          <p class="mt-5 text-[color:var(--muted)] leading-relaxed text-justify">
             I’m an AI researcher at SDSU’s MINT Lab. My work focuses on building robust multimodal systems and evaluation methods for
             <span class="font-semibold">video comprehension</span>—including long‑form description scoring and narrative alignment. I also have experience in firmware and embedded systems for wireless networks and IoT.
           </p>
+        </section>
+
+        <!-- News -->
+        <section id="news" class="mt-12 scroll-mt-24">
+          <h2 class="text-2xl font-semibold text-gray-900">News</h2>
+          <div class="relative mt-4">
+            <button aria-label="Previous news" id="newsPrev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 p-2 rounded-full bg-[color:var(--card)] border border-[color:var(--border)] shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div id="newsTrack" class="grid grid-flow-col auto-cols-[16rem] overflow-x-auto snap-x snap-mandatory gap-6 pb-4 no-scrollbar scroll-pl-6 cursor-grab">
+              <!-- AAAI Paper -->
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
+                <img src="https://placehold.co/400x300/0ea5e9/ffffff?text=AAAI-25" alt="AAAI 2025 Publication" class="w-full h-48 object-cover" width="400" height="300" loading="lazy"/>
+                <div class="p-4 flex flex-col flex-grow">
+                  <p class="text-sm text-gray-700 flex-grow">My first-author student abstract on video understanding, "Leveraging Textual Memory and Key Frame Reasoning," was accepted to <strong>AAAI-25</strong>.</p>
+                  <p class="text-xs text-gray-400 mt-4">April 2025</p>
+                </div>
+              </article>
+              <!-- Joined MINT Lab -->
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
+                <img src="https://logo.clearbit.com/sdstate.edu" alt="SDSU Logo" class="w-full h-48 object-contain p-4 bg-gray-50" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/333?text=SDSU';"/>
+                <div class="p-4 flex flex-col flex-grow">
+                  <p class="text-sm text-gray-700 flex-grow">Began my AI research journey at the <strong>MINT Lab</strong> at South Dakota State University, focusing on multimodal systems.</p>
+                  <p class="text-xs text-gray-400 mt-4">Fall 2024</p>
+                </div>
+              </article>
+              <!-- Returned to Trilliant -->
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
+                <img src="https://logo.clearbit.com/trilliant.com" alt="Trilliant Logo" class="w-full h-48 object-contain p-8 bg-gray-900" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/222/eee?text=Trilliant';"/>
+                <div class="p-4 flex flex-col flex-grow">
+                  <p class="text-sm text-gray-700 flex-grow">Returned to <strong>Trilliant Networks</strong> to continue developing firmware for wireless utility networks.</p>
+                  <p class="text-xs text-gray-400 mt-4">February 2023</p>
+                </div>
+              </article>
+              <!-- Joined Amazon -->
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
+                <img src="https://logo.clearbit.com/amazon.com" alt="Amazon Logo" class="w-full h-48 object-contain p-8" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/ff9900/ffffff?text=Amazon';"/>
+                <div class="p-4 flex flex-col flex-grow">
+                  <p class="text-sm text-gray-700 flex-grow">Joined <strong>Amazon's Just Walk Out</strong> team as a Wireless Software Engineer, building embedded libraries and tooling.</p>
+                  <p class="text-xs text-gray-400 mt-4">July 2022</p>
+                </div>
+              </article>
+              <!-- Joined Trilliant -->
+               <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
+                <img src="https://logo.clearbit.com/trilliant.com" alt="Trilliant Logo" class="w-full h-48 object-contain p-8 bg-gray-900" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/222/eee?text=Trilliant';"/>
+                <div class="p-4 flex flex-col flex-grow">
+                  <p class="text-sm text-gray-700 flex-grow">Started my first industry role as a Firmware Engineer at <strong>Trilliant Networks</strong>, working on IoT devices.</p>
+                  <p class="text-xs text-gray-400 mt-4">July 2021</p>
+                </div>
+              </article>
+              <!-- Joined SDSU ABE -->
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm flex flex-col">
+                <img src="https://logo.clearbit.com/sdstate.edu" alt="SDSU ABE Logo" class="w-full h-48 object-contain p-4 bg-gray-50" width="400" height="300" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x300/e0e0e0/333?text=SDSU';"/>
+                <div class="p-4 flex flex-col flex-grow">
+                  <p class="text-sm text-gray-700 flex-grow">Joined the <strong>SDSU ABE department</strong> as an Electrical Engineer for wireless embedded systems and IoT projects.</p>
+                  <p class="text-xs text-gray-400 mt-4">January 2020</p>
+                </div>
+              </article>
+            </div>
+            <button aria-label="Next news" id="newsNext" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 p-2 rounded-full bg-[color:var(--card)] border border-[color:var(--border)] shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
         </section>
 
         <!-- Experience (keywords bolded throughout) -->
@@ -174,7 +239,7 @@
                   <span class="text-xs text-gray-500">Fall 2024 – Present</span>
                 </div>
                 <p class="text-sm text-gray-700 mt-1">Researching <strong>video understanding</strong> with <strong>VLM+LLM</strong> systems, <strong>evaluation metrics</strong>, and <strong>long‑video architectures</strong>.</p>
-                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1 text-justify">
                   <li><strong>AAAI‑25 Student Abstract (1st‑author)</strong>: designed a <strong>textual memory</strong> + <strong>key‑frame reasoning</strong> pipeline pairing a VLM with an LLM; proposed <strong>VAD‑Score</strong> to evaluate <strong>events</strong>, <strong>subjects</strong>, and <strong>objects</strong>; competitive results on <strong>DREAM‑1K</strong>.</li>
                   <li><strong>Video Comprehension Score (VCS)</strong>: authored a metric and reference implementation for <strong>long‑form video description</strong> quality; docs and examples provided.</li>
                   <li><strong>CLIP‑CC dataset & Recurrent Multimodal Model (RMM)</strong>: equal‑contrib on dataset creation; designed the <strong>RMM</strong> for <strong>long‑video processing</strong>.</li>
@@ -193,7 +258,7 @@
                   <span class="text-xs text-gray-500">Jul 2022 – Feb 2023</span>
                 </div>
                 <p class="text-sm text-gray-700 mt-1">Designed, developed, and implemented software for wireless networks in Just Walk Out, spanning <strong>embedded libraries</strong>, <strong>edge‑device tooling</strong>, and <strong>performance telemetry</strong>.</p>
-                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1 text-justify">
                   <li>Built a <strong>Contiki‑NG</strong> C/C++ <strong>library</strong> and application on <strong>EFR32BG</strong> to create a Frugal Event Detection Device (FRED). Exposed APIs for efficient data readout, <strong>timestamping</strong>, <strong>packetization</strong>, and transmission; app sent <strong>LwM2M/CoAP</strong> messages over high‑speed <strong>UART</strong> via <strong>tunslip6</strong> to a server.</li>
                   <li>Created a <strong>load‑cell validation (LCV)</strong> library for an <strong>IEEE 802.15.4 2.4 GHz</strong> network coordinator (Contiki‑NG, C/C++). Collected ADC samples, sorted, computed medians, and published results for <strong>smart‑shelf</strong> install validation.</li>
                   <li>Developed a debug <strong>CLI</strong> for an 802.15.4 edge device’s <strong>deep‑sleep</strong> mode: <strong>9,600</strong> baud while asleep and <strong>115,200</strong> baud in normal mode.</li>
@@ -213,7 +278,7 @@
                   <span class="text-xs text-gray-500">Jul 2021 – Jul 2022 & Feb 2023 – Present</span>
                 </div>
                 <p class="text-sm text-gray-700 mt-1">Delivered firmware features and observability for utility IoT across <strong>900 MHz/802.15.4</strong> NICs and meter endpoints.</p>
-                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1 text-justify">
                   <li>Developed <strong>C/C++</strong> features for <strong>Spectra ANSI meter NIC</strong> on <strong>RPMA 900 MHz (802.15.4)</strong> enabling <strong>OTA</strong>/serial table access.</li>
                   <li>Led <strong>water MIU</strong> product work: vendor firmware validation, <strong>unit tests</strong>, and <strong>driver integration</strong> on RPMA NIC.</li>
                   <li>Built <strong>Node‑RED</strong> dashboards, remote‑control apps, and Linux server setups (<strong>InfluxDB</strong>, <strong>Prometheus</strong>, <strong>MySQL</strong>, <strong>Nginx</strong>, <strong>Grafana</strong>).</li>
@@ -232,7 +297,7 @@
                   <span class="text-xs text-gray-500">Jan 2020 – May 2020 & Dec 2020 – Jul 2021</span>
                 </div>
                 <p class="text-sm text-gray-700 mt-1">Prototyped an end‑to‑end <strong>LoRaWAN</strong> monitoring system for swine facilities with gateways, cloud, and web UI.</p>
-                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1">
+                <ul class="list-disc pl-5 mt-2 text-sm text-gray-700 space-y-1 text-justify">
                   <li>Built non‑invasive sensor nodes (<strong>Arduino Uno/Mega</strong> + LoRaWAN shield) and a <strong>C#</strong> serial interface.</li>
                   <li>Configured <strong>The Things Network (TTN)</strong> gateway and implemented <strong>Firebase</strong>‑backed UI (HTML/CSS/JS).</li>
                   <li>Deployed data pipeline: gateway → <strong>Firebase</strong> → browser dashboards.</li>
@@ -392,38 +457,6 @@
           </div>
         </section>
 
-        <!-- News -->
-        <section id="news" class="mt-12 scroll-mt-24">
-          <h2 class="text-2xl font-semibold text-gray-900">News</h2>
-          <div class="relative mt-4">
-            <button aria-label="Previous news" id="newsPrev" class="absolute left-0 top-1/2 -translate-y-1/2 p-2 rounded bg-[color:var(--card)] border border-[color:var(--border)] shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">◂</button>
-            <div id="newsTrack" class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 no-scrollbar">
-              <article class="snap-start min-w-[16rem] w-64 border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm">
-                <img src="https://placehold.co/400x300/0ea5e9/111?text=AAAI+2025" alt="AAAI 2025" class="w-full h-32 object-cover" width="400" height="300" loading="lazy"/>
-                <div class="p-3">
-                  <p class="text-sm text-gray-700">AAAI‑25 student abstract published: textual memory + key‑frame reasoning, and VAD‑Score.</p>
-                  <p class="text-xs text-gray-400 mt-4">Apr, 2025</p>
-                </div>
-              </article>
-              <article class="snap-start min-w-[16rem] w-64 border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm">
-                <img src="https://placehold.co/400x300/a7c7e7/333?text=News+Image" alt="News item" class="w-full h-32 object-cover" width="400" height="300" loading="lazy"/>
-                <div class="p-3">
-                  <p class="text-sm text-gray-700">Placeholder for a news item—achievement, project, or announcement.</p>
-                  <p class="text-xs text-gray-400 mt-4">Nov, 2024</p>
-                </div>
-              </article>
-              <article class="snap-start min-w-[16rem] w-64 border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] shadow-sm">
-                <img src="https://placehold.co/400x300/c1e1c1/333?text=News+Image" alt="News item" class="w-full h-32 object-cover" width="400" height="300" loading="lazy"/>
-                <div class="p-3">
-                  <p class="text-sm text-gray-700">Another exciting update—awards, paper acceptances, etc.</p>
-                  <p class="text-xs text-gray-400 mt-4">Jun, 2025</p>
-                </div>
-              </article>
-            </div>
-            <button aria-label="Next news" id="newsNext" class="absolute right-0 top-1/2 -translate-y-1/2 p-2 rounded bg-[color:var(--card)] border border-[color:var(--border)] shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">▸</button>
-          </div>
-        </section>
-
         <!-- Contact -->
         <section id="contact" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Contact</h2>
@@ -447,8 +480,40 @@
 
     // news scroller
     const track = document.getElementById('newsTrack');
-    document.getElementById('newsPrev')?.addEventListener('click', () => track.scrollBy({left: -320, behavior: 'smooth'}));
-    document.getElementById('newsNext')?.addEventListener('click', () => track.scrollBy({left: 320, behavior: 'smooth'}));
+    const newsPrev = document.getElementById('newsPrev');
+    const newsNext = document.getElementById('newsNext');
+    
+    if (track && newsPrev && newsNext) {
+        const scrollAmount = 280; // Corresponds to auto-cols-[16rem] + gap-6
+        newsPrev.addEventListener('click', () => track.scrollBy({left: -scrollAmount, behavior: 'smooth'}));
+        newsNext.addEventListener('click', () => track.scrollBy({left: scrollAmount, behavior: 'smooth'}));
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        track.addEventListener('mousedown', (e) => {
+            isDown = true;
+            track.classList.add('grabbing');
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+        track.addEventListener('mouseleave', () => {
+            isDown = false;
+            track.classList.remove('grabbing');
+        });
+        track.addEventListener('mouseup', () => {
+            isDown = false;
+            track.classList.remove('grabbing');
+        });
+        track.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 2; //scroll-fast
+            track.scrollLeft = scrollLeft - walk;
+        });
+    }
   </script>
 </body>
 </html>
