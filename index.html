@@ -111,12 +111,12 @@
 
     .divider { border-color: var(--border); filter: drop-shadow(0 1px 0 rgba(0,0,0,.02)); }
 
-    /* --- News Card Animation --- */
-    .news-card {
+    /* --- News & Project Card Animation --- */
+    .news-card, .project-card {
         perspective: 1000px;
     }
 
-    .news-visual {
+    .news-visual, .project-visual {
         position: relative;
         overflow: hidden;
     }
@@ -126,7 +126,7 @@
         transform-style: preserve-3d;
     }
 
-    .news-visual::after {
+    .news-visual::after, .project-visual::after {
         content: '';
         position: absolute;
         top: 0;
@@ -141,6 +141,17 @@
         );
         transform: translateX(-150%) skewX(-25deg);
         animation: shimmer-effect 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 8rem;
+        color: white;
+        text-align: center;
+        font-weight: 600;
+        padding: 1rem;
     }
 
     @keyframes icon-flip {
@@ -160,7 +171,7 @@
             transform: translateX(250%) skewX(-25deg);
         }
     }
-    /* --- End News Card Animation --- */
+    /* --- End Animation --- */
 
   </style>
   <script>
@@ -245,7 +256,7 @@
               <span class="tag neo-sm">LoRaWAN • RPMA</span>
               <span class="tag neo-sm">LwM2M/CoAP • MQTT</span>
               <span class="tag neo-sm">UART • I²C • SPI • USB</span>
-              <span class="tag neo-sm">Node‑RED • Grafana • InfluxDB • Prometheus • MySQL</span>
+              <span class="tag neo-sm">Node‑RED • Grafana • InfluxDB • Prometheus • MySQL • Nginx</span>
               <span class="tag neo-sm">FPGA Verilog • ModelSim • Quartus • Lattice</span>
               <span class="tag neo-sm">Oscilloscope • Logic Analyzer • Multimeter</span>
             </div>
@@ -553,11 +564,12 @@
         <section id="projects" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Projects</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <article class="neo overflow-hidden flex flex-col">
-              <img src="https://placehold.co/600x400/b0c4de/333?text=Project+Visual" alt="Network Configuration Dongle visual" class="w-full h-40 object-cover" width="600" height="400" loading="lazy"/>
+            <article class="neo overflow-hidden flex flex-col project-card">
+              <div class="project-visual" style="background-color: #4f46e5;">
+                <span class="text-xl font-bold">Network Configuration Dongle</span>
+              </div>
               <div class="p-4 flex flex-col flex-grow">
-                <h3 class="font-semibold text-gray-800"><a href="#" class="link-underline">Network Configuration Dongle</a></h3>
-                <p class="text-xs text-gray-500 mt-1">Senior Design Project at SDSU</p>
+                <p class="text-xs text-gray-500">Senior Design Project at SDSU</p>
                 <p class="text-sm text-gray-600 mt-2 flex-grow">Designed a dongle to fetch and reconfigure a display controller’s network settings without a network, using an ARM Cortex processor and a C# driver.</p>
                 <div class="mt-4">
                   <span class="badge neo-sm">C#</span>
@@ -566,11 +578,12 @@
                 </div>
               </div>
             </article>
-            <article class="neo overflow-hidden flex flex-col">
-              <img src="https://placehold.co/600x400/c2d4dd/333?text=Project+Visual" alt="Reactive Gaming System visual" class="w-full h-40 object-cover" width="600" height="400" loading="lazy"/>
+            <article class="neo overflow-hidden flex flex-col project-card">
+              <div class="project-visual" style="background-color: #16a34a;">
+                <span class="text-xl font-bold">Reactive Gaming System</span>
+              </div>
               <div class="p-4 flex flex-col flex-grow">
-                <h3 class="font-semibold text-gray-800"><a href="#" class="link-underline">Reactive Gaming System</a></h3>
-                <p class="text-xs text-gray-500 mt-1">Senior Design Project at SDSU</p>
+                <p class="text-xs text-gray-500">Senior Design Project at SDSU</p>
                 <p class="text-sm text-gray-600 mt-2 flex-grow">Developed a gaming system that adapts to a player’s brain status using EEG signals, featuring a custom emotion model and a 2D game built in Unity.</p>
                 <div class="mt-4">
                   <span class="badge neo-sm">Unity</span>
