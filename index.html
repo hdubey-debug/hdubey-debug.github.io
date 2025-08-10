@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -16,18 +15,32 @@
     :root{ 
       --bg:#f9fafb; --text:#0f172a; --muted:#374151; --card:#ffffff; --border:#e5e7eb; --accent:#2563eb; 
       --paper:#1d4ed8; --dataset:#059669; --code:#7c3aed; --metric:#d97706; --talk:#db2777;
+      --neo-radius:16px; 
+      --neo-shadow: rgba(163,177,198,.55);
+      --neo-light: rgba(255,255,255,.9);
+      --neo-inset-shadow: rgba(163,177,198,.65);
+      --neo-inset-light: rgba(255,255,255,.65);
     }
     [data-theme='dark']{ 
-      --bg:#0b1220; --text:#e5e7eb; --muted:#9ca3af; --card:#111827; --border:#1f2937; --accent:#60a5fa; 
+      --bg:#0b1220; --text:#e5e7eb; --muted:#9ca3af; --card:#101723; --border:#1c2432; --accent:#60a5fa; 
       --paper:#60a5fa; --dataset:#34d399; --code:#a78bfa; --metric:#fbbf24; --talk:#f472b6;
+      --neo-radius:16px;
+      --neo-shadow: rgba(0, 0, 0, .55);
+      --neo-light: rgba(255,255,255,.04);
+      --neo-inset-shadow: rgba(0,0,0,.6);
+      --neo-inset-light: rgba(255,255,255,.03);
     }
     [data-theme='ochre'] {
       --bg: #fdf6e3; --text: #654f34; --muted: #938f7a; --card: #fbf1d8; --border: #d3cbb4; --accent: #b58900;
       --paper:#268bd2; --dataset:#859900; --code:#6c71c4; --metric:#cb4b16; --talk:#d33682;
+      --neo-shadow: rgba(137,112,82,.25);
+      --neo-light: rgba(255,255,255,.8);
     }
     [data-theme='teal'] {
       --bg: #002b36; --text: #839496; --muted: #586e75; --card: #073642; --border: #2a4b54; --accent: #2aa198;
       --paper:#268bd2; --dataset:#859900; --code:#6c71c4; --metric:#cb4b16; --talk:#d33682;
+      --neo-shadow: rgba(0,0,0,.55);
+      --neo-light: rgba(255,255,255,.05);
     }
 
     html, body { height: 100%; }
@@ -37,102 +50,120 @@
     .link-underline { position: relative; }
     .link-underline::after { content:""; position:absolute; left:0; bottom:-2px; width:100%; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .2s ease; }
     .link-underline:hover::after, .link-underline:focus-visible::after { transform:scaleX(1); }
+
+    .neo { background: var(--card); border-radius: var(--neo-radius); box-shadow: 6px 6px 12px var(--neo-shadow), -6px -6px 12px var(--neo-light); border:1px solid var(--border); }
+    .neo:hover { box-shadow: 7px 7px 14px var(--neo-shadow), -7px -7px 14px var(--neo-light); }
+    .neo-pressed { background: var(--card); border-radius: var(--neo-radius); box-shadow: inset 5px 5px 10px var(--neo-inset-shadow), inset -5px -5px 12px var(--neo-inset-light); border:1px solid var(--border); }
+    .neo-circle { border-radius: 9999px; box-shadow: 5px 5px 10px var(--neo-shadow), -5px -5px 10px var(--neo-light); background: var(--card); border:1px solid var(--border); }
+    .neo-sm { border-radius:9999px; box-shadow: 2px 2px 4px var(--neo-shadow), -2px -2px 4px var(--neo-light); background: var(--card); }
+
     .badge { display:inline-flex; align-items:center; gap:.375rem; border:1px solid var(--border); border-radius:9999px; padding:.125rem .5rem; font-size:.75rem; }
-    /* publication cards */
-    .pub-card{ border:1px solid var(--border); background:var(--card); border-radius:14px; box-shadow:0 1px 2px rgba(0,0,0,.04); overflow:hidden; }
+    .author a{ color:#1d4ed8; font-weight:600; }
+    [data-theme='dark'] .author a, [data-theme='teal'] .author a { color:#60a5fa; }
+    [data-theme='ochre'] .author a { color:#b58900; }
+    .tag{ display:inline-block; padding:.32rem .6rem; border-radius:9999px; font-size:.75rem; line-height:1; border:1px solid var(--border); background:rgba(2,6,23,.05); margin:.25rem .35rem 0 0; white-space:nowrap; }
+    [data-theme='dark'] .tag, [data-theme='teal'] .tag { background:rgba(255,255,255,.06); }
+    [data-theme='ochre'] .tag { background:rgba(0,0,0,.04); }
+    .text-justify { text-align: justify; }
+
+    .pill{ display:inline-flex; align-items:center; gap:.4rem; padding:.35rem .7rem; border-radius:9999px; font-size:.75rem; border:1px solid; font-weight:600; background: var(--card); box-shadow: 2px 2px 4px var(--neo-shadow), -2px -2px 4px var(--neo-light); }
+    .pill svg{ width:16px; height:16px; }
+    .pill-website{ color:#1d4ed8; border-color:rgba(29,78,216,.25); }
+    .pill-pdf{ color:#b45309; border-color:rgba(180,83,9,.28); }
+    .pill-arxiv{ color:#dc2626; border-color:rgba(220,38,38,.25); }
+    .pill-github{ color:#111827; border-color:rgba(17,24,39,.2); }
+    [data-theme='dark'] .pill-website, [data-theme='teal'] .pill-website { color:#60a5fa; }
+    [data-theme='dark'] .pill-pdf, [data-theme='teal'] .pill-pdf { color:#f59e0b; }
+    [data-theme='dark'] .pill-arxiv, [data-theme='teal'] .pill-arxiv { color:#f87171; }
+    [data-theme='dark'] .pill-github, [data-theme='teal'] .pill-github { color:#e5e7eb; }
+    [data-theme='ochre'] .pill-website { color:#268bd2; }
+    [data-theme='ochre'] .pill-pdf { color:#cb4b16; }
+    [data-theme='ochre'] .pill-arxiv { color:#dc322f; }
+    [data-theme='ochre'] .pill-github { color:#654f34; }
+
+    .pub-card{ border:1px solid var(--border); background:var(--card); border-radius:var(--neo-radius); overflow:hidden; box-shadow: 6px 6px 12px var(--neo-shadow), -6px -6px 12px var(--neo-light); }
     .pub-accent{ width:6px; background:var(--tone); }
     .tone-paper{ --tone: var(--paper); }
     .tone-dataset{ --tone: var(--dataset); }
     .tone-metric{ --tone: var(--metric); }
-    /* colored action pills */
-    .pill{ display:inline-flex; align-items:center; gap:.4rem; padding:.25rem .6rem; border-radius:9999px; font-size:.75rem; border:1px solid; font-weight:600; }
-    .pill svg{ width:16px; height:16px; }
-    .pill-website{ color:#1d4ed8; background:rgba(29,78,216,.1); border-color:rgba(29,78,216,.25); }
-    .pill-pdf{ color:#b45309; background:rgba(180,83,9,.12); border-color:rgba(180,83,9,.28); }
-    .pill-arxiv{ color:#dc2626; background:rgba(220,38,38,.1); border-color:rgba(220,38,38,.25); }
-    .pill-github{ color:#111827; background:rgba(17,24,39,.08); border-color:rgba(17,24,39,.2); }
-    [data-theme='dark'] .pill-website, [data-theme='teal'] .pill-website { color:#60a5fa; background:rgba(96,165,250,.15); border-color:rgba(96,165,250,.35); }
-    [data-theme='dark'] .pill-pdf, [data-theme='teal'] .pill-pdf { color:#f59e0b; background:rgba(245,158,11,.12); border-color:rgba(245,158,11,.28); }
-    [data-theme='dark'] .pill-arxiv, [data-theme='teal'] .pill-arxiv { color:#f87171; background:rgba(248,113,113,.12); border-color:rgba(248,113,113,.28); }
-    [data-theme='dark'] .pill-github, [data-theme='teal'] .pill-github { color:#e5e7eb; background:rgba(229,231,235,.08); border-color:rgba(229,231,235,.2); }
-    [data-theme='ochre'] .pill-website { color:#268bd2; background:rgba(38,139,210,.1); border-color:rgba(38,139,210,.25); }
-    [data-theme='ochre'] .pill-pdf { color:#cb4b16; background:rgba(203,75,22,.1); border-color:rgba(203,75,22,.25); }
-    [data-theme='ochre'] .pill-arxiv { color:#dc322f; background:rgba(220,50,47,.1); border-color:rgba(220,50,47,.25); }
-    [data-theme='ochre'] .pill-github { color:#654f34; background:rgba(101,79,52,.1); border-color:rgba(101,79,52,.25); }
-    .author a{ color:#1d4ed8; font-weight:600; }
-    [data-theme='dark'] .author a, [data-theme='teal'] .author a { color:#60a5fa; }
-    [data-theme='ochre'] .author a { color:#b58900; }
-    /* tag style for compact skills */
-    .tag{ display:inline-block; padding:.32rem .6rem; border-radius:9999px; font-size:.75rem; line-height:1; border:1px solid var(--border); background:rgba(2,6,23,.05); margin:.25rem .35rem 0 0; white-space:nowrap; }
-    [data-theme='dark'] .tag, [data-theme='teal'] .tag { background:rgba(255,255,255,.06); }
-    [data-theme='ochre'] .tag { background:rgba(0,0,0,.04); }
-    #newsTrack.grabbing { cursor: grabbing; }
-    .text-justify { text-align: justify; }
-    /* Style for blurred news navigation buttons */
-    .news-nav-btn {
-      background-color: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+
+    .news-visual { display:flex; flex-direction:row; align-items:center; justify-content:center; gap:.75rem; width:100%; height:12rem; color:white; text-align:center; font-weight:600; font-size:1.25rem; }
+    .news-visual svg { width:2rem; height:2rem; }
+    .news-card { transition: transform .18s ease-out; border-radius: var(--neo-radius); box-shadow: 6px 6px 12px var(--neo-shadow), -6px -6px 12px var(--neo-light); background:var(--card); }
+    .news-card:hover { transform: translateY(-2px); }
+
+    .news-nav-btn { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius:9999px; border:1px solid var(--border); padding:.5rem 1rem; background-color: color-mix(in srgb, var(--card) 80%, transparent); box-shadow: 4px 4px 8px var(--neo-shadow), -4px -4px 8px var(--neo-light); }
+    @supports not (color-mix(in srgb, white 80%, black)) {
+      .news-nav-btn { background-color: rgba(255,255,255,.06); }
+      [data-theme='dark'] .news-nav-btn, [data-theme='teal'] .news-nav-btn { background-color: rgba(17,24,39,.35); }
+      [data-theme='ochre'] .news-nav-btn { background-color: rgba(253, 246, 227, 0.6); }
     }
-    [data-theme='dark'] .news-nav-btn, [data-theme='teal'] .news-nav-btn {
-      background-color: rgba(17, 24, 39, 0.6);
-    }
-    [data-theme='ochre'] .news-nav-btn {
-      background-color: rgba(253, 246, 227, 0.6);
-    }
-    /* Dark mode text color overrides */
+
     [data-theme='dark'] .text-gray-900, [data-theme='dark'] .text-gray-800, [data-theme='dark'] .text-gray-700, [data-theme='dark'] h3.font-semibold,
-    [data-theme='teal'] .text-gray-900, [data-theme='teal'] .text-gray-800, [data-theme='teal'] .text-gray-700, [data-theme='teal'] h3.font-semibold {
-      color: var(--text);
-    }
+    [data-theme='teal'] .text-gray-900, [data-theme='teal'] .text-gray-800, [data-theme='teal'] .text-gray-700, [data-theme='teal'] h3.font-semibold { color: var(--text); }
     [data-theme='dark'] .text-gray-600, [data-theme='dark'] .text-gray-500, [data-theme='dark'] .text-gray-400,
-    [data-theme='teal'] .text-gray-600, [data-theme='teal'] .text-gray-500, [data-theme='teal'] .text-gray-400 {
-      color: var(--muted);
-    }
-    .news-visual {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      width: 100%;
-      height: 12rem; /* h-48 */
-      color: white;
-      text-align: center;
-      font-weight: 600;
-      font-size: 1.25rem;
-    }
-    .news-visual svg {
-      width: 2rem;
-      height: 2rem;
-    }
-    
-    /* News Card Hover Effect */
+    [data-theme='teal'] .text-gray-600, [data-theme='teal'] .text-gray-500, [data-theme='teal'] .text-gray-400 { color: var(--muted); }
+
+    .xp-icon { width:56px; height:56px; display:flex; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:14px; background:var(--card); box-shadow: 5px 5px 10px var(--neo-shadow), -5px -5px 10px var(--neo-light); }
+
+    .neo-frame { padding: .5rem; border-radius: calc(var(--neo-radius) + 6px); background: var(--card); box-shadow: 7px 7px 14px var(--neo-shadow), -7px -7px 14px var(--neo-light); border:1px solid var(--border); }
+    .neo-frame img { border-radius: 14px; display:block; width:100%; height:auto; }
+
+    .divider { border-color: var(--border); filter: drop-shadow(0 1px 0 rgba(0,0,0,.02)); }
+
+    /* --- News Card Animation --- */
     .news-card {
-      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        perspective: 1000px;
     }
-    .news-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    .news-visual {
+        position: relative;
+        overflow: hidden;
     }
-    [data-theme='dark'] .news-card, [data-theme='teal'] .news-card {
-       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+
+    .news-visual svg {
+        animation: icon-flip 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
     }
-    [data-theme='dark'] .news-card:hover, [data-theme='teal'] .news-card:hover {
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+
+    .news-visual::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: translateX(-150%) skewX(-25deg);
+        animation: shimmer-effect 5s infinite cubic-bezier(0.4, 0, 0.2, 1);
     }
-    [data-theme='ochre'] .news-card {
-       box-shadow: 0 1px 3px 0 rgba(101, 79, 52, 0.1), 0 1px 2px 0 rgba(101, 79, 52, 0.06);
+
+    @keyframes icon-flip {
+        0% { transform: rotateY(0deg); }
+        25% { transform: rotateY(360deg); }
+        100% { transform: rotateY(360deg); }
     }
-    [data-theme='ochre'] .news-card:hover {
-      box-shadow: 0 10px 15px -3px rgba(101, 79, 52, 0.1), 0 4px 6px -2px rgba(101, 79, 52, 0.05);
+
+    @keyframes shimmer-effect {
+        0%, 25% {
+            transform: translateX(-150%) skewX(-25deg);
+        }
+        50% {
+            transform: translateX(250%) skewX(-25deg);
+        }
+        100% {
+            transform: translateX(250%) skewX(-25deg);
+        }
     }
+    /* --- End News Card Animation --- */
 
   </style>
   <script>
-    // This script sets the theme.
-    // It prioritizes a theme saved in localStorage, otherwise it defaults to 'dark'.
     (function(){
       const savedTheme = localStorage.getItem('theme');
       document.documentElement.dataset.theme = savedTheme || 'dark';
@@ -147,26 +178,27 @@
 
       <!-- SIDEBAR -->
       <aside class="lg:sticky top-10 h-fit space-y-6">
-        <img src="IMG_3042.JPG" alt="Portrait of Harsh Dubey" class="rounded-lg shadow w-full" width="400" height="400" loading="eager" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e0e0e0/333?text=Image+Not+Found';"/>
+        <div class="neo-frame">
+          <img src="IMG_3042.JPG" alt="Portrait of Harsh Dubey" width="400" height="400" loading="eager" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e0e0e0/333?text=Image+Not+Found';"/>
+        </div>
 
-        <div>
+        <div class="neo p-4">
           <p class="text-2xl font-bold text-gray-900">Harsh Dubey</p>
           <p class="text-sm text-gray-600 mt-1">AI Researcher</p>
           <p class="text-sm text-gray-600">Multimodal AI • Embedded Systems</p>
         </div>
 
-        <div class="flex items-center gap-3" aria-label="Social links">
-          <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="https://github.com/hdubey-debug?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0  0 0 12 .5Z"/></svg>
+        <div class="neo p-2 flex items-center gap-3" aria-label="Social links">
+          <a class="p-2 neo-circle hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="https://github.com/hdubey-debug?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0  0 0 12 .5Z"/></svg>
           </a>
-          <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="#" aria-label="Google Scholar">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="22" height="22" fill="currentColor"><path d="M320 32 32 224l288 160 288-160L320 32zm0 352-160-89.1V384c0 70.7 71.6 128 160 128s160-57.3 160-128v-89.1L320 384z"/></svg>
+          <a class="p-2 neo-circle hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="#" aria-label="Google Scholar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="20" height="20" fill="currentColor"><path d="M320 32 32 224l288 160 288-160L320 32zm0 352-160-89.1V384c0 70.7 71.6 128 160 128s160-57.3 160-128v-89.1L320 384z"/></svg>
           </a>
-          <a class="p-2 rounded hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="#" aria-label="Twitter">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M18.2 2H21l-6.5 7.5L22.5 22H16l-4.6-6-5.3 6H3.3l7-8-6.7-8h6l4.1 5.4L18.2 2ZM16.9 20h1.7L7.2 4H5.4l11.5 16Z"/></svg>
+          <a class="p-2 neo-circle hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]" href="#" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.2 2H21l-6.5 7.5L22.5 22H16l-4.6-6-5.3 6H3.3l7-8-6.7-8h6l4.1 5.4L18.2 2ZM16.9 20h1.7L7.2 4H5.4l11.5 16Z"/></svg>
           </a>
-          <!-- THEME SWITCHER -->
-          <div id="theme-switcher" class="ml-auto flex items-center gap-2 border border-[color:var(--border)] bg-[color:var(--card)] rounded-full p-1">
+          <div id="theme-switcher" class="ml-auto neo-pressed flex items-center gap-2 rounded-full p-1">
             <button data-theme-value="light" aria-label="Light theme" class="p-1.5 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             </button>
@@ -182,49 +214,47 @@
           </div>
         </div>
 
-        <!-- SKILLS: Two stacked groups with tags -->
-        <section aria-label="Skills" class="text-sm">
+        <section aria-label="Skills" class="text-sm neo p-4">
           <h3 class="font-semibold text-gray-800 mb-2">Skills</h3>
           <div class="skill-group">
             <h4 class="text-xs font-semibold uppercase tracking-wide text-gray-500">AI & Research</h4>
             <div class="mt-2">
-              <span class="tag">Multimodal video understanding</span>
-              <span class="tag">Long‑video modeling</span>
-              <span class="tag">Vision‑Language (VLM)</span>
-              <span class="tag">LLM + textual memory</span>
-              <span class="tag">Key‑frame reasoning</span>
-              <span class="tag">Evaluation metrics (VCS, VAD‑Score)</span>
-              <span class="tag">Dataset design (CLIP‑CC)</span>
-              <span class="tag">Recurrent multimodal (RMM)</span>
-              <span class="tag">TensorFlow / Keras</span>
-              <span class="tag">Experimentation & benchmarking</span>
+              <span class="tag neo-sm">Multimodal video understanding</span>
+              <span class="tag neo-sm">Long‑video modeling</span>
+              <span class="tag neo-sm">Vision‑Language (VLM)</span>
+              <span class="tag neo-sm">LLM + textual memory</span>
+              <span class="tag neo-sm">Key‑frame reasoning</span>
+              <span class="tag neo-sm">Evaluation metrics (VCS, VAD‑Score)</span>
+              <span class="tag neo-sm">Dataset design (CLIP‑CC)</span>
+              <span class="tag neo-sm">Recurrent multimodal (RMM)</span>
+              <span class="tag neo-sm">TensorFlow / Keras</span>
+              <span class="tag neo-sm">Experimentation & benchmarking</span>
             </div>
           </div>
 
-          <hr class="my-4 border-[color:var(--border)]" />
+          <hr class="my-4 divider" />
 
           <div class="skill-group">
             <h4 class="text-xs font-semibold uppercase tracking-wide text-gray-500">Firmware & Embedded</h4>
             <div class="mt-2">
-              <span class="tag">C/C++ (embedded)</span>
-              <span class="tag">Contiki‑NG • FreeRTOS</span>
-              <span class="tag">ARM Cortex‑M • PIC</span>
-              <span class="tag">Silicon Labs EFR32BG</span>
-              <span class="tag">IEEE 802.15.4 (2.4 GHz/900 MHz)</span>
-              <span class="tag">LoRaWAN • RPMA</span>
-              <span class="tag">LwM2M/CoAP • MQTT</span>
-              <span class="tag">UART • I²C • SPI • USB</span>
-              <span class="tag">Node‑RED • Grafana • InfluxDB • Prometheus • MySQL • Nginx</span>
-              <span class="tag">FPGA Verilog • ModelSim • Quartus • Lattice</span>
-              <span class="tag">Oscilloscope • Logic Analyzer • Multimeter</span>
+              <span class="tag neo-sm">C/C++ (embedded)</span>
+              <span class="tag neo-sm">Contiki‑NG • FreeRTOS</span>
+              <span class="tag neo-sm">ARM Cortex‑M • PIC</span>
+              <span class="tag neo-sm">Silicon Labs EFR32BG</span>
+              <span class="tag neo-sm">IEEE 802.15.4 (2.4 GHz/900 MHz)</span>
+              <span class="tag neo-sm">LoRaWAN • RPMA</span>
+              <span class="tag neo-sm">LwM2M/CoAP • MQTT</span>
+              <span class="tag neo-sm">UART • I²C • SPI • USB</span>
+              <span class="tag neo-sm">Node‑RED • Grafana • InfluxDB • Prometheus • MySQL</span>
+              <span class="tag neo-sm">FPGA Verilog • ModelSim • Quartus • Lattice</span>
+              <span class="tag neo-sm">Oscilloscope • Logic Analyzer • Multimeter</span>
             </div>
           </div>
         </section>
 
-        <hr class="border-[color:var(--border)]" />
+        <hr class="divider" />
 
-        <!-- Quick contact -->
-        <div class="space-y-3 text-sm">
+        <div class="space-y-3 text-sm neo p-4">
           <div class="flex items-center text-gray-600">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
             <span>had7143@gmail.com</span>
@@ -242,24 +272,23 @@
 
       <!-- MAIN CONTENT -->
       <main id="main" class="mt-8 lg:mt-0 overflow-hidden">
-        <!-- About -->
-        <section id="about" class="scroll-mt-24">
+        <section id="about" class="scroll-mt-24 neo p-6">
           <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Harsh Dubey</h1>
           <p class="mt-5 text-[color:var(--muted)] leading-relaxed text-justify">
             Hi! I'm an AI researcher focused on building multimodal AI systems that are broadly useful and robust. I have a track record of leading high-impact projects from conception to deployment. At SDSU's MINT Lab, I designed and led the development of the <strong>Video Comprehension Score</strong>, <strong>Recurrent Multimodal Models</strong>, and the <strong>CLIP-CC Dataset</strong>, managing a team of three. Previously at Amazon, I led the development of the <strong>Frugal Event Detection device (FRED)</strong>, and at Trilliant, I spearheaded the creation of <strong>point-to-point wireless IoT Water Meter Devices</strong>. I hold an M.S. in Computer Science (4.0 GPA) and a B.S. in Electrical Engineering, both from South Dakota State University.
           </p>
         </section>
 
-        <!-- News -->
         <section id="news" class="mt-12 scroll-mt-24">
-          <h2 class="text-2xl font-semibold text-gray-900">News</h2>
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-semibold text-gray-900">News</h2>
+          </div>
           <div class="relative mt-4">
-            <button aria-label="Previous news" id="newsPrev" class="news-nav-btn absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 flex items-center gap-2 px-4 py-2 rounded-full border border-[color:var(--border)] shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] transition-all text-sm font-semibold">
+            <button aria-label="Previous news" id="newsPrev" class="news-nav-btn absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 flex items-center gap-2 px-4 py-2 hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] text-sm font-semibold">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
               Prev
             </button>
             <div id="newsTrack" class="grid grid-flow-col auto-cols-[16rem] overflow-x-auto snap-x snap-mandatory gap-6 pb-4 no-scrollbar scroll-pl-6 cursor-grab">
-              <!-- AAAI Paper -->
               <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
                 <div class="news-visual" style="background-color: #0ea5e9;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
@@ -270,7 +299,6 @@
                   <p class="text-xs text-gray-400 mt-4">April 2025</p>
                 </div>
               </article>
-              <!-- Joined MINT Lab -->
               <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
                  <div class="news-visual" style="background-color: #013c65;">
                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
@@ -281,7 +309,6 @@
                   <p class="text-xs text-gray-400 mt-4">Fall 2024</p>
                 </div>
               </article>
-              <!-- Returned to Trilliant -->
               <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
                 <div class="news-visual" style="background-color: #00a99d;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
@@ -292,7 +319,6 @@
                   <p class="text-xs text-gray-400 mt-4">February 2023</p>
                 </div>
               </article>
-              <!-- Joined Amazon -->
               <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
                 <div class="news-visual" style="background-color: #ff9900;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
@@ -303,8 +329,7 @@
                   <p class="text-xs text-gray-400 mt-4">July 2022</p>
                 </div>
               </article>
-              <!-- Joined Trilliant -->
-               <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
+              <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
                 <div class="news-visual" style="background-color: #00a99d;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                   <span>Trilliant</span>
@@ -314,7 +339,6 @@
                   <p class="text-xs text-gray-400 mt-4">July 2021</p>
                 </div>
               </article>
-              <!-- Joined SDSU ABE -->
               <article class="snap-start border border-[color:var(--border)] rounded-lg overflow-hidden bg-[color:var(--card)] flex flex-col news-card">
                 <div class="news-visual" style="background-color: #013c65;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
@@ -326,26 +350,24 @@
                 </div>
               </article>
             </div>
-            <button aria-label="Next news" id="newsNext" class="news-nav-btn absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 flex items-center gap-2 px-4 py-2 rounded-full border border-[color:var(--border)] shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] transition-all text-sm font-semibold">
+            <button aria-label="Next news" id="newsNext" class="news-nav-btn absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 flex items-center gap-2 px-4 py-2 hover:opacity-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] text-sm font-semibold">
               Next
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
           </div>
         </section>
 
-        <!-- Experience (keywords bolded throughout) -->
         <section id="experience" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Selected Experience</h2>
           <div class="space-y-8 mt-6">
-            <!-- MINT Lab -->
-            <article class="flex gap-4">
-              <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[color:var(--card)] border border-[color:var(--border)] flex items-center justify-center overflow-hidden">
+            <article class="flex gap-4 neo p-4">
+              <div class="flex-shrink-0 xp-icon">
                 <img src="https://logo.clearbit.com/sdstate.edu" alt="SDSU / MINT Lab logo" class="h-8 w-8 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/64x64?text=M';"/>
               </div>
               <div>
                 <div class="flex flex-wrap items-center gap-2">
                   <p class="font-semibold text-gray-900">AI Researcher</p>
-                  <span class="badge">SDSU — MINT Lab</span>
+                  <span class="badge neo-sm">SDSU — MINT Lab</span>
                   <span class="text-xs text-gray-500">Fall 2024 – Present</span>
                 </div>
                 <p class="text-sm text-gray-700 mt-1">Researching <strong>video understanding</strong> with <strong>VLM+LLM</strong> systems, <strong>evaluation metrics</strong>, and <strong>long‑video architectures</strong>.</p>
@@ -356,15 +378,14 @@
                 </ul>
               </div>
             </article>
-            <!-- Amazon -->
-            <article class="flex gap-4">
-              <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[color:var(--card)] border border-[color:var(--border)] flex items-center justify-center overflow-hidden">
+            <article class="flex gap-4 neo p-4">
+              <div class="flex-shrink-0 xp-icon">
                 <img src="https://logo.clearbit.com/amazon.com" alt="Amazon logo" class="h-8 w-8 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/64x64?text=A';"/>
               </div>
               <div>
                 <div class="flex flex-wrap items-center gap-2">
                   <p class="font-semibold text-gray-900">Wireless Software Engineer</p>
-                  <span class="badge">Amazon — Just Walk Out</span>
+                  <span class="badge neo-sm">Amazon — Just Walk Out</span>
                   <span class="text-xs text-gray-500">Jul 2022 – Feb 2023</span>
                 </div>
                 <p class="text-sm text-gray-700 mt-1">Designed, developed, and implemented software for wireless networks in Just Walk Out, spanning <strong>embedded libraries</strong>, <strong>edge‑device tooling</strong>, and <strong>performance telemetry</strong>.</p>
@@ -376,15 +397,14 @@
                 </ul>
               </div>
             </article>
-            <!-- Trilliant -->
-            <article class="flex gap-4">
-              <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[color:var(--card)] border border-[color:var(--border)] flex items-center justify-center overflow-hidden">
+            <article class="flex gap-4 neo p-4">
+              <div class="flex-shrink-0 xp-icon">
                 <img src="https://logo.clearbit.com/trilliant.com" alt="Trilliant Networks logo" class="h-8 w-8 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/64x64?text=T';"/>
               </div>
               <div>
                 <div class="flex flex-wrap items-center gap-2">
                   <p class="font-semibold text-gray-900">Firmware Engineer — Wireless Networks</p>
-                  <span class="badge">Trilliant Networks</span>
+                  <span class="badge neo-sm">Trilliant Networks</span>
                   <span class="text-xs text-gray-500">Jul 2021 – Jul 2022 & Feb 2023 – Present</span>
                 </div>
                 <p class="text-sm text-gray-700 mt-1">Delivered firmware features and observability for utility IoT across <strong>900 MHz/802.15.4</strong> NICs and meter endpoints.</p>
@@ -395,15 +415,14 @@
                 </ul>
               </div>
             </article>
-            <!-- SDSU -->
-            <article class="flex gap-4">
-              <div class="flex-shrink-0 w-14 h-14 rounded-lg bg-[color:var(--card)] border border-[color:var(--border)] flex items-center justify-center overflow-hidden">
+            <article class="flex gap-4 neo p-4">
+              <div class="flex-shrink-0 xp-icon">
                 <img src="https://logo.clearbit.com/sdstate.edu" alt="South Dakota State University logo" class="h-8 w-8 object-contain" onerror="this.onerror=null;this.src='https://placehold.co/64x64?text=S';"/>
               </div>
               <div>
                 <div class="flex flex-wrap items-center gap-2">
                   <p class="font-semibold text-gray-900">Electrical Engineer — Wireless Embedded Systems IoT</p>
-                  <span class="badge">SDSU — ABE</span>
+                  <span class="badge neo-sm">SDSU — ABE</span>
                   <span class="text-xs text-gray-500">Jan 2020 – May 2020 & Dec 2020 – Jul 2021</span>
                 </div>
                 <p class="text-sm text-gray-700 mt-1">Prototyped an end‑to‑end <strong>LoRaWAN</strong> monitoring system for swine facilities with gateways, cloud, and web UI.</p>
@@ -417,19 +436,18 @@
           </div>
         </section>
 
-        <!-- Publications (image left, TL;DR, colored action pills, blue authors) -->
+        <!-- Publications (buttons pinned to bottom) -->
         <section id="publications" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Publications</h2>
           <div class="mt-6 space-y-4">
-            <!-- AAAI 2025 Student Abstract -->
-            <article class="pub-card tone-paper">
-              <div class="flex">
+            <article class="pub-card tone-paper h-full">
+              <div class="flex h-full">
                 <div class="pub-accent"></div>
                 <div class="grid md:grid-cols-[280px_1fr] gap-4 p-4 w-full">
-                  <div class="rounded-lg overflow-hidden" style="height: 180px;">
+                  <div class="rounded-lg overflow-hidden h-[180px]">
                     <img src="CLIP-CC.gif" alt="CLIP-CC Demo" class="w-full h-full object-cover object-center" loading="lazy"/>
                   </div>
-                  <div>
+                  <div class="flex flex-col">
                     <h3 class="text-lg font-semibold">Leveraging Textual Memory and Key Frame Reasoning for Full Video Understanding Using Off‑the‑Shelf LLMs and VLMs <span class="opacity-80">(Student Abstract)</span></h3>
                     <p class="text-sm author mt-1">
                       <a href="#" class="link-underline">Harsh Dubey</a>, <a href="#" class="link-underline">Chulwoo Pack</a>
@@ -439,7 +457,7 @@
                       <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
                       <span class="text-sm text-[color:var(--muted)]">Combine a <strong>VLM</strong> with an <strong>LLM</strong> plus <strong>textual memory</strong> and <strong>key‑frame reasoning</strong> for fine‑grained, long‑video understanding; introduce <strong>VAD‑Score</strong>; competitive results on <strong>DREAM‑1K</strong>.</span>
                     </div>
-                    <div class="mt-3 flex flex-wrap gap-2">
+                    <div class="mt-auto flex flex-wrap gap-2 pt-3">
                       <a class="pill pill-website" href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1 4-9 15.3 15.3 0 0 1 4-9Z"/></svg>
                         Website
@@ -462,15 +480,14 @@
               </div>
             </article>
 
-            <!-- Another publication placeholder -->
-            <article class="pub-card tone-paper">
-              <div class="flex">
+            <article class="pub-card tone-paper h-full">
+              <div class="flex h-full">
                 <div class="pub-accent"></div>
                 <div class="grid md:grid-cols-[280px_1fr] gap-4 p-4 w-full">
-                  <div class="rounded-lg overflow-hidden" style="height: 180px;">
+                  <div class="rounded-lg overflow-hidden h-[180px]">
                     <img src="vcs.gif" alt="VCS Demo" class="w-full h-full object-cover object-center" loading="lazy"/>
                   </div>
-                  <div>
+                  <div class="flex flex-col">
                     <h3 class="text-lg font-semibold">Your Next Paper Title</h3>
                     <p class="text-sm author mt-1"><a href="#" class="link-underline">Author A</a>, <a href="#" class="link-underline">Author B</a>, <a href="#" class="link-underline">Author C</a></p>
                     <p class="text-sm text-gray-600 mt-1">Venue · Year</p>
@@ -478,7 +495,7 @@
                       <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
                       <span class="text-sm text-[color:var(--muted)]">One‑line summary of the contribution.</span>
                     </div>
-                    <div class="mt-3 flex flex-wrap gap-2">
+                    <div class="mt-auto flex flex-wrap gap-2 pt-3">
                       <a class="pill pill-website" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1 4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
                       <a class="pill pill-pdf" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
                       <a class="pill pill-github" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>Code</a>
@@ -491,22 +508,21 @@
           </div>
         </section>
 
-        <!-- Software (2-col grid) -->
+        <!-- Software (buttons pinned to bottom) -->
         <section id="software" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Software</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <!-- VCS card -->
-            <article class="pub-card tone-metric">
-              <div class="flex">
+            <article class="tone-metric pub-card h-full">
+              <div class="flex h-full">
                 <div class="pub-accent"></div>
-                <div class="p-4 w-full">
+                <div class="p-4 w-full flex flex-col">
                   <div class="flex items-center gap-2 text-sm font-semibold">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[color:var(--metric)]" width="18" height="18"><path d="M3 3v18h18"/><path d="M7 15l3-3 4 4 5-7"/></svg>
                     Video Comprehension Score (VCS)
-                    <span class="badge">Metric</span>
+                    <span class="badge neo-sm">Metric</span>
                   </div>
                   <p class="text-sm text-[color:var(--muted)] mt-2">Automated scoring for <strong>long‑form video descriptions</strong> with precision/recall/F1 across <strong>events</strong>, <strong>subjects</strong>, and <strong>objects</strong>; includes reference implementation and examples.</p>
-                  <div class="mt-3 flex flex-wrap gap-2">
+                  <div class="mt-auto flex flex-wrap gap-2 pt-3">
                     <a class="pill pill-github" href="https://github.com/Multimodal-Intelligence-Lab/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
                     <a class="pill pill-website" href="https://multimodal-intelligence-lab.github.io/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1 4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
                     <a class="pill pill-website" href="#" title="Add PyPI link">PyPI</a>
@@ -514,18 +530,18 @@
                 </div>
               </div>
             </article>
-            <!-- CLIP-CC card -->
-            <article class="pub-card tone-dataset">
-              <div class="flex">
+
+            <article class="tone-dataset pub-card h-full">
+              <div class="flex h-full">
                 <div class="pub-accent"></div>
-                <div class="p-4 w-full">
+                <div class="p-4 w-full flex flex-col">
                   <div class="flex items-center gap-2 text-sm font-semibold">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-[color:var(--dataset)]" width="18" height="18"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
                     CLIP‑CC
-                    <span class="badge">Dataset</span>
+                    <span class="badge neo-sm">Dataset</span>
                   </div>
                   <p class="text-sm text-[color:var(--muted)] mt-2">A dataset for <strong>contrastive captioning</strong> with CLIP‑aligned supervision; used to train/test <strong>recurrent multimodal</strong> architectures for long videos.</p>
-                  <div class="mt-3 flex flex-wrap gap-2">
+                  <div class="mt-auto flex flex-wrap gap-2 pt-3">
                     <a class="pill pill-github" href="https://github.com/Multimodal-Intelligence-Lab/CLIP-CC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
                   </div>
                 </div>
@@ -534,41 +550,39 @@
           </div>
         </section>
 
-        <!-- Projects (2-col) -->
         <section id="projects" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Projects</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <article class="border border-[color:var(--border)] rounded-lg bg-[color:var(--card)] shadow-sm overflow-hidden flex flex-col">
+            <article class="neo overflow-hidden flex flex-col">
               <img src="https://placehold.co/600x400/b0c4de/333?text=Project+Visual" alt="Network Configuration Dongle visual" class="w-full h-40 object-cover" width="600" height="400" loading="lazy"/>
               <div class="p-4 flex flex-col flex-grow">
                 <h3 class="font-semibold text-gray-800"><a href="#" class="link-underline">Network Configuration Dongle</a></h3>
                 <p class="text-xs text-gray-500 mt-1">Senior Design Project at SDSU</p>
                 <p class="text-sm text-gray-600 mt-2 flex-grow">Designed a dongle to fetch and reconfigure a display controller’s network settings without a network, using an ARM Cortex processor and a C# driver.</p>
                 <div class="mt-4">
-                  <span class="badge">C#</span>
-                  <span class="badge">ARM Cortex</span>
-                  <span class="badge">Firmware</span>
+                  <span class="badge neo-sm">C#</span>
+                  <span class="badge neo-sm">ARM Cortex</span>
+                  <span class="badge neo-sm">Firmware</span>
                 </div>
               </div>
             </article>
-            <article class="border border-[color:var(--border)] rounded-lg bg-[color:var(--card)] shadow-sm overflow-hidden flex flex-col">
+            <article class="neo overflow-hidden flex flex-col">
               <img src="https://placehold.co/600x400/c2d4dd/333?text=Project+Visual" alt="Reactive Gaming System visual" class="w-full h-40 object-cover" width="600" height="400" loading="lazy"/>
               <div class="p-4 flex flex-col flex-grow">
                 <h3 class="font-semibold text-gray-800"><a href="#" class="link-underline">Reactive Gaming System</a></h3>
                 <p class="text-xs text-gray-500 mt-1">Senior Design Project at SDSU</p>
                 <p class="text-sm text-gray-600 mt-2 flex-grow">Developed a gaming system that adapts to a player’s brain status using EEG signals, featuring a custom emotion model and a 2D game built in Unity.</p>
                 <div class="mt-4">
-                  <span class="badge">Unity</span>
-                  <span class="badge">C#</span>
-                  <span class="badge">EEG</span>
+                  <span class="badge neo-sm">Unity</span>
+                  <span class="badge neo-sm">C#</span>
+                  <span class="badge neo-sm">EEG</span>
                 </div>
               </div>
             </article>
           </div>
         </section>
 
-        <!-- Contact -->
-        <section id="contact" class="mt-12 scroll-mt-24">
+        <section id="contact" class="mt-12 scroll-mt-24 neo p-6">
           <h2 class="text-2xl font-semibold text-gray-900">Contact</h2>
           <p class="mt-3 text-sm text-gray-700">Email <a href="mailto:had7143@gmail.com" class="link-underline">had7143@gmail.com</a>, or grab my <a href="#" class="link-underline">CV (PDF)</a>.</p>
         </section>
@@ -580,58 +594,24 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    
-    // Theme switcher logic
+
     const themeSwitcher = document.getElementById('theme-switcher');
     const buttons = themeSwitcher.querySelectorAll('button');
+    const setTheme = (themeName) => { document.documentElement.dataset.theme = themeName; localStorage.setItem('theme', themeName); };
+    buttons.forEach(button => { button.addEventListener('click', () => { const theme = button.dataset.themeValue; setTheme(theme); }); });
 
-    const setTheme = (themeName) => {
-      document.documentElement.dataset.theme = themeName;
-      localStorage.setItem('theme', themeName);
-    };
-
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const theme = button.dataset.themeValue;
-        setTheme(theme);
-      });
-    });
-
-    // news scroller
     const track = document.getElementById('newsTrack');
     const newsPrev = document.getElementById('newsPrev');
     const newsNext = document.getElementById('newsNext');
-    
     if (track && newsPrev && newsNext) {
-        const scrollAmount = 280; // Corresponds to auto-cols-[16rem] + + gap-6
-        newsPrev.addEventListener('click', () => track.scrollBy({left: -scrollAmount, behavior: 'smooth'}));
-        newsNext.addEventListener('click', () => track.scrollBy({left: scrollAmount, behavior: 'smooth'}));
-
-        let isDown = false;
-        let startX;
-        let scrollLeft;
-
-        track.addEventListener('mousedown', (e) => {
-            isDown = true;
-            track.classList.add('grabbing');
-            startX = e.pageX - track.offsetLeft;
-            scrollLeft = track.scrollLeft;
-        });
-        track.addEventListener('mouseleave', () => {
-            isDown = false;
-            track.classList.remove('grabbing');
-        });
-        track.addEventListener('mouseup', () => {
-            isDown = false;
-            track.classList.remove('grabbing');
-        });
-        track.addEventListener('mousemove', (e) => {
-            if(!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - track.offsetLeft;
-            const walk = (x - startX) * 2; //scroll-fast
-            track.scrollLeft = scrollLeft - walk;
-        });
+      const scrollAmount = 280;
+      newsPrev.addEventListener('click', () => track.scrollBy({left: -scrollAmount, behavior: 'smooth'}));
+      newsNext.addEventListener('click', () => track.scrollBy({left: scrollAmount, behavior: 'smooth'}));
+      let isDown = false; let startX; let scrollLeft;
+      track.addEventListener('mousedown', (e) => { isDown = true; track.classList.add('grabbing'); startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+      track.addEventListener('mouseleave', () => { isDown = false; track.classList.remove('grabbing'); });
+      track.addEventListener('mouseup', () => { isDown = false; track.classList.remove('grabbing'); });
+      track.addEventListener('mousemove', (e) => { if(!isDown) return; e.preventDefault(); const x = e.pageX - track.offsetLeft; const walk = (x - startX) * 2; track.scrollLeft = scrollLeft - walk; });
     }
   </script>
 </body>
