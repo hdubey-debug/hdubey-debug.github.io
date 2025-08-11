@@ -72,20 +72,25 @@
     .pill-pdf{ color:#b45309; border-color:rgba(180,83,9,.28); }
     .pill-arxiv{ color:#dc2626; border-color:rgba(220,38,38,.25); }
     .pill-github{ color:#111827; border-color:rgba(17,24,39,.2); }
+    .pill-powerpoint{ color:#d97706; border-color:rgba(217,119,6,.28); }
     [data-theme='dark'] .pill-website, [data-theme='teal'] .pill-website { color:#60a5fa; }
     [data-theme='dark'] .pill-pdf, [data-theme='teal'] .pill-pdf { color:#f59e0b; }
     [data-theme='dark'] .pill-arxiv, [data-theme='teal'] .pill-arxiv { color:#f87171; }
     [data-theme='dark'] .pill-github, [data-theme='teal'] .pill-github { color:#e5e7eb; }
+    [data-theme='dark'] .pill-powerpoint, [data-theme='teal'] .pill-powerpoint { color:#fbbf24; }
     [data-theme='ochre'] .pill-website { color:#268bd2; }
     [data-theme='ochre'] .pill-pdf { color:#cb4b16; }
     [data-theme='ochre'] .pill-arxiv { color:#dc322f; }
     [data-theme='ochre'] .pill-github { color:#654f34; }
+    [data-theme='ochre'] .pill-powerpoint { color:#cb4b16; }
 
     .pub-card{ border:1px solid var(--border); background:var(--card); border-radius:var(--neo-radius); overflow:hidden; box-shadow: 6px 6px 12px var(--neo-shadow), -6px -6px 12px var(--neo-light); }
     .pub-accent{ width:6px; background:var(--tone); }
     .tone-paper{ --tone: var(--paper); }
     .tone-dataset{ --tone: var(--dataset); }
     .tone-metric{ --tone: var(--metric); }
+    .tone-code{ --tone: var(--code); }
+    .tone-talk{ --tone: var(--talk); }
 
     .news-visual { display:flex; flex-direction:row; align-items:center; justify-content:center; gap:.75rem; width:100%; height:12rem; color:white; text-align:center; font-weight:600; font-size:1.25rem; }
     .news-visual svg { width:2rem; height:2rem; }
@@ -172,6 +177,25 @@
         }
     }
     /* --- End Animation --- */
+
+    /* Projects: bare list rows with subtle left rail */
+    .projects-list { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .proj-row { display:grid; grid-template-columns: 6px 1fr; gap:0; align-items:start; padding:14px 0; border-top:1px solid var(--border); }
+    .proj-row:first-child { border-top: none; }
+    .proj-rail { background: var(--tone, var(--accent)); border-radius: 3px; height: 100%; width:6px; }
+    .proj-content { padding-left: 12px; display:flex; flex-direction:column; gap:6px; }
+    .proj-title-row { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px; }
+    .proj-title { font-weight:600; line-height:1.3; flex-grow:1; }
+    .proj-date { font-size:.75rem; color: var(--muted); font-weight:400; margin-left:1rem; }
+    .proj-context { font-size:.75rem; color: var(--muted); }
+    .proj-desc { font-size:.875rem; color: var(--muted); margin:8px 0; }
+    .proj-bullets { margin:8px 0; }
+    .proj-bullets ul { list-style-type: disc; padding-left: 1.25rem; margin: 0; }
+    .proj-bullets li { font-size:.875rem; color: var(--muted); margin-bottom: 4px; line-height: 1.4; }
+    .proj-meta { margin-top:8px; display:flex; flex-wrap:wrap; gap:.5rem; }
+    /* Interactions */
+    .proj-row:hover .proj-title { text-decoration: underline; text-underline-offset: 2px; }
+    .proj-row:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   </style>
   <script>
@@ -276,7 +300,7 @@
           </div>
           <div class="flex items-center text-gray-600">
             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-            <a href="#" class="hover:text-[color:var(--accent)] transition-colors link-underline">CV (PDF)</a>
+            <a href="Resume_Harsh-Grad.pdf" target="_blank" class="hover:text-[color:var(--accent)] transition-colors link-underline">CV (PDF)</a>
           </div>
         </div>
       </aside>
@@ -486,7 +510,6 @@
                         arXiv
                       </a>
                     </div>
-                  </div>
                 </div>
               </div>
             </article>
@@ -512,7 +535,6 @@
                       <a class="pill pill-github" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>Code</a>
                       <a class="pill pill-arxiv" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19h16M7 19V5h3l2 3 2-3h3v14"/></svg>arXiv</a>
                     </div>
-                  </div>
                 </div>
               </div>
             </article>
@@ -537,7 +559,6 @@
                     <a class="pill pill-github" href="https://github.com/Multimodal-Intelligence-Lab/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
                     <a class="pill pill-website" href="https://multimodal-intelligence-lab.github.io/Video-Comprehension-Score" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1 4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
                     <a class="pill pill-website" href="#" title="Add PyPI link">PyPI</a>
-                  </div>
                 </div>
               </div>
             </article>
@@ -554,7 +575,6 @@
                   <p class="text-sm text-[color:var(--muted)] mt-2">A dataset for <strong>contrastive captioning</strong> with CLIP‑aligned supervision; used to train/test <strong>recurrent multimodal</strong> architectures for long videos.</p>
                   <div class="mt-auto flex flex-wrap gap-2 pt-3">
                     <a class="pill pill-github" href="https://github.com/Multimodal-Intelligence-Lab/CLIP-CC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
-                  </div>
                 </div>
               </div>
             </article>
@@ -563,41 +583,269 @@
 
         <section id="projects" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Projects</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <article class="neo overflow-hidden flex flex-col project-card">
-              <div class="project-visual" style="background-color: #4f46e5;">
-                <span class="text-xl font-bold">Network Configuration Dongle</span>
-              </div>
-              <div class="p-4 flex flex-col flex-grow">
-                <p class="text-xs text-gray-500">Senior Design Project at SDSU</p>
-                <p class="text-sm text-gray-600 mt-2 flex-grow">Designed a dongle to fetch and reconfigure a display controller’s network settings without a network, using an ARM Cortex processor and a C# driver.</p>
-                <div class="mt-4">
-                  <span class="badge neo-sm">C#</span>
-                  <span class="badge neo-sm">ARM Cortex</span>
-                  <span class="badge neo-sm">Firmware</span>
+          <div class="projects-list mt-3">
+
+            <!-- Nemotron-o1 Dataflow -->
+            <div class="proj-row" style="--tone:#2563eb;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Nemotron-o1: Thinking Dataflow Summarization Using LLM Agents</h3>
+                  <span class="proj-date">Fall 2024</span>
+                </div>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Developed <strong>NATDF framework</strong> leveraging <strong>Nemotron-70B model</strong> for program dataflow analysis through <strong>three-phase approach</strong>: source/sink identification, <strong>agentic thinking</strong> for inter-procedural summaries, and <strong>Z3 solver validation</strong>. Achieved <strong>91.46% precision</strong> and <strong>92.88% recall</strong> with scalable performance.</span>
+                </div>
+                <div class="proj-meta">
+                    <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                    <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
                 </div>
               </div>
-            </article>
-            <article class="neo overflow-hidden flex flex-col project-card">
-              <div class="project-visual" style="background-color: #16a34a;">
-                <span class="text-xl font-bold">Reactive Gaming System</span>
-              </div>
-              <div class="p-4 flex flex-col flex-grow">
-                <p class="text-xs text-gray-500">Senior Design Project at SDSU</p>
-                <p class="text-sm text-gray-600 mt-2 flex-grow">Developed a gaming system that adapts to a player’s brain status using EEG signals, featuring a custom emotion model and a 2D game built in Unity.</p>
-                <div class="mt-4">
-                  <span class="badge neo-sm">Unity</span>
-                  <span class="badge neo-sm">C#</span>
-                  <span class="badge neo-sm">EEG</span>
+            </div>
+
+            <!-- Heart Attack Analysis -->
+            <div class="proj-row" style="--tone:#dc2626;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Heart Attack Analysis And Prediction</h3>
+                  <span class="proj-date">Fall 2023</span>
+                </div>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Developed comprehensive <strong>machine learning pipeline</strong> for heart attack prediction featuring <strong>rigorous EDA</strong>, multi-stage preprocessing with <strong>winsorization</strong> and <strong>feature engineering</strong>. Trained diverse classifiers including <strong>Logistic Regression</strong>, <strong>SVMs</strong>, and <strong>ANNs</strong> with extensive hyperparameter tuning. Achieved optimal results using <strong>ensemble VotingClassifier</strong> approach.</span>
+                </div>
+                <div class="proj-meta">
+                    <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                    <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
                 </div>
               </div>
-            </article>
+            </div>
+
+            <!-- HDGAN Analysis -->
+            <div class="proj-row" style="--tone:#7c3aed;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Comparative Analysis and Synthesis of HDGAN</h3>
+                  <span class="proj-date">Fall 2023</span>
+                </div>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Introduced three <strong>High-Definition GAN variants</strong> combining <strong>progressive training architecture from ProGAN</strong> with <strong>StyleGAN features</strong> including <strong>skip regularization</strong>, <strong>R1/R2 regularization</strong>, and <strong>bi-linear upsampling</strong>. Trained on <strong>CelebHQ subset</strong> at 256x256 resolution with comparative analysis of different alpha strategies and loss functions.</span>
+                </div>
+                <div class="proj-meta">
+                    <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- FPGA Digital Circuits -->
+            <div class="proj-row" style="--tone:#7c3aed;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">FPGA Digital Circuit Development</h3>
+                  <span class="proj-date">Present</span>
+                </div>
+                <p class="proj-context">South Dakota State University</p>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Comprehensive <strong>digital systems design</strong> progression from basic logic gates to <strong>16‑bit non‑pipelined microprocessors</strong>. Implemented <strong>UART modules</strong>, <strong>SEC‑DED error correction</strong>, <strong>Booth's multiplier</strong>, and <strong>stepper motor controllers</strong> using <strong>Verilog HDL</strong> on <strong>DE‑10 and Cyclone 2 FPGAs</strong> with ModelSim verification.</span>
+                </div>
+                <div class="proj-meta">
+                    <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Beat Saber Game -->
+            <div class="proj-row" style="--tone:#f472b6;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Beat Saber Game Console</h3>
+                  <span class="proj-date">Spring 2020</span>
+                </div>
+                <p class="proj-context">South Dakota State University</p>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Engineered complete <strong>beat saber‑inspired gaming system</strong> using <strong>DE‑10 lite FPGA</strong> as unified console and controller. Integrated <strong>onboard gyroscope</strong> for tilt-based controls, <strong>accelerometer</strong> for additional functions, programmed using <strong>NIOS II softcore processor</strong>, and implemented <strong>VGA output</strong> with <strong>Phase‑Locked‑Loop (PLL)</strong> for monitor display.</span>
+                </div>
+                <div class="proj-meta">
+                    <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-powerpoint" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21.2 15c.7-1.2 1-2.5.7-3.9-.6-2-2.4-3.5-4.4-3.5h-1.2l-.3-1.2c-1.1-4.4-5.1-7.4-9.4-6.3-3.3.8-5.7 3.6-6 7-.2.4-.2.8-.1 1.1C.3 9.6.1 11.4 1 13c1.1 2 3.3 3.2 5.7 3h13.5c1.1 0 2-.9 2-2 0-.4-.1-.8-.3-1.1-.3-.3-.5-.6-.7-.9z"/><path d="M12 12v7M9 16l3 3 3-3"/></svg>PowerPoint</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Camera Calibration -->
+            <div class="proj-row" style="--tone:#059669;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Camera Calibration</h3>
+                  <span class="proj-date">Fall 2019</span>
+                </div>
+                <p class="proj-context">South Dakota State University</p>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Conducted comprehensive <strong>camera calibration</strong> on digital imaging systems using <strong>precision techniques</strong> adapted from <strong>microscopy and satellite remote sensing</strong> applications. Documented substantial <strong>image quality improvements</strong> through systematic before/after analysis, demonstrating mastery of <strong>computer vision fundamentals</strong> and <strong>optical system optimization</strong>.</span>
+                </div>
+                <div class="proj-meta">
+                  <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Image Restoration -->
+            <div class="proj-row" style="--tone:#d97706;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Image Restoration using MATLAB</h3>
+                  <span class="proj-date">Fall 2019</span>
+                </div>
+                <p class="proj-context">South Dakota State University</p>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Successfully restored and processed <strong>noisy/blurred satellite images</strong> using advanced <strong>MATLAB signal processing</strong> techniques. Implemented multiple filtering approaches including <strong>Wiener filtering</strong> for optimal estimation, <strong>transfer function filtration</strong> for system modeling, and <strong>inverse noise function filtration</strong> for artifact removal, achieving significant image quality restoration.</span>
+                </div>
+                <div class="proj-meta">
+                  <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-powerpoint" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21.2 15c.7-1.2 1-2.5.7-3.9-.6-2-2.4-3.5-4.4-3.5h-1.2l-.3-1.2c-1.1-4.4-5.1-7.4-9.4-6.3-3.3.8-5.7 3.6-6 7-.2.4-.2.8-.1 1.1C.3 9.6.1 11.4 1 13c1.1 2 3.3 3.2 5.7 3h13.5c1.1 0 2-.9 2-2 0-.4-.1-.8-.3-1.1-.3-.3-.5-.6-.7-.9z"/><path d="M12 12v7M9 16l3 3 3-3"/></svg>PowerPoint</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vehicle Temperature Monitor -->
+            <div class="proj-row" style="--tone:#7c3aed;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">EEPROM Data Storage Unit for a Minivan using I2C and PIC 18</h3>
+                  <span class="proj-date">Summer 2019</span>
+                </div>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Engineered comprehensive <strong>automotive temperature monitoring system</strong> using <strong>PIC18 microcontroller</strong> with <strong>I²C EEPROM</strong> for persistent data storage. Implemented multi-zone temperature acquisition from vehicle front/back sensors, designed <strong>LCD user interface</strong> with <strong>pushbutton controls</strong> for data visualization and analysis, demonstrating embedded systems integration skills.</span>
+                </div>
+                <div class="proj-meta">
+                  <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Delta Modulator -->
+            <div class="proj-row" style="--tone:#db2777;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Linear and Adaptive Delta Modulator construction/comparison using PSPICE</h3>
+                  <span class="proj-date">Spring 2018</span>
+                </div>
+                <p class="proj-context">South Dakota State University</p>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Designed and implemented both <strong>linear and adaptive delta modulators</strong> using <strong>discrete analog components</strong> and comprehensive <strong>PSPICE simulation analysis</strong>. Conducted systematic performance comparison between fixed and adaptive step-size approaches, analyzing <strong>signal quality</strong>, <strong>modulation efficiency</strong>, and circuit complexity trade-offs in analog signal processing systems.</span>
+                </div>
+                <div class="proj-meta">
+                  <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Home Energy Management System -->
+            <div class="proj-row" style="--tone:#34d399;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Home Energy Management System (HEMS)</h3>
+                  <span class="proj-date">Spring 2018</span>
+                </div>
+                <p class="proj-context">South Dakota State University</p>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Developed comprehensive <strong>Home Energy Management System</strong> using <strong>PIC18 microcontroller</strong> with <strong>embedded C and assembly programming</strong>. Implemented intelligent load control algorithms, multi-sensor interface with <strong>temperature sensors</strong>, <strong>LCD display</strong>, and <strong>pushbuttons</strong>. Established <strong>UART communication</strong> with PC for real-time energy price integration and tested with fan/heater control validation.</span>
+                </div>
+                <div class="proj-meta">
+                  <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                  <a class="pill pill-powerpoint" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21.2 15c.7-1.2 1-2.5.7-3.9-.6-2-2.4-3.5-4.4-3.5h-1.2l-.3-1.2c-1.1-4.4-5.1-7.4-9.4-6.3-3.3.8-5.7 3.6-6 7-.2.4-.2.8-.1 1.1C.3 9.6.1 11.4 1 13c1.1 2 3.3 3.2 5.7 3h13.5c1.1 0 2-.9 2-2 0-.4-.1-.8-.3-1.1-.3-.3-.5-.6-.7-.9z"/><path d="M12 12v7M9 16l3 3 3-3"/></svg>PowerPoint</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Smart Tea Kettle -->
+            <div class="proj-row" style="--tone:#fbbf24;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Smart Tea Kettle using PIC18 Micro‑controller</h3>
+                  <span class="proj-date">Spring 2018</span>
+                </div>
+                <p class="proj-context">South Dakota State University</p>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Transformed traditional cordless tea kettle into intelligent <strong>IoT-enabled device</strong> using <strong>ARM Cortex‑M4F microcontroller</strong>. Integrated <strong>keypad interface</strong>, <strong>LCD display</strong>, <strong>LED indicators</strong>, and sophisticated <strong>temperature control algorithms</strong> for automated brewing. Developed complete firmware solution using <strong>embedded C programming</strong> for enhanced user control and automation.</span>
+                </div>
+                <div class="proj-meta">
+                  <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parallel Pulse Generator -->
+            <div class="proj-row" style="--tone:#7c3aed;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Parallel Pulse Generator (PPG)</h3>
+                  <span class="proj-date">Fall 2016</span>
+                </div>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Engineered sophisticated <strong>parallel pulse generator</strong> system to produce <strong>N synchronized parallel pulses</strong> from single button trigger input. Implemented using <strong>N flip‑flops architecture</strong> on <strong>DE‑10 FPGA board</strong>, demonstrating advanced <strong>digital logic design</strong> and <strong>timing synchronization</strong> principles for multi-output pulse generation applications.</span>
+                </div>
+                <div class="proj-meta">
+                  <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Programmable State Machine -->
+            <div class="proj-row" style="--tone:#059669;">
+              <div class="proj-rail" aria-hidden="true"></div>
+              <div class="proj-content">
+                <div class="proj-title-row">
+                  <h3 class="proj-title">Programmable N‑state State Machine</h3>
+                  <span class="proj-date">Fall 2016</span>
+                </div>
+                <div class="mt-2 inline-flex items-center gap-2">
+                  <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                  <span class="text-sm text-[color:var(--muted)]">Designed and implemented advanced <strong>programmable N‑state state machine</strong> capable of handling <strong>[N‑(N‑2)] to N operations</strong> without hardware modifications. Utilized <strong>N decoders and combinational logic</strong> architecture on <strong>Cyclone‑2 FPGA</strong>, demonstrating flexible digital system design with configurable operation modes and hardware reusability principles.</span>
+                </div>
+                <div class="proj-meta">
+                  <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>GitHub</a>
+                  <a class="pill pill-pdf" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
         <section id="contact" class="mt-12 scroll-mt-24 neo p-6">
           <h2 class="text-2xl font-semibold text-gray-900">Contact</h2>
-          <p class="mt-3 text-sm text-gray-700">Email <a href="mailto:had7143@gmail.com" class="link-underline">had7143@gmail.com</a>, or grab my <a href="#" class="link-underline">CV (PDF)</a>.</p>
+          <p class="mt-3 text-sm text-gray-700">Email <a href="mailto:had7143@gmail.com" class="link-underline">had7143@gmail.com</a>, or grab my <a href="Resume_Harsh-Grad.pdf" target="_blank" class="link-underline">CV (PDF)</a>.</p>
         </section>
       </main>
     </div>
