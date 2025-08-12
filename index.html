@@ -222,7 +222,8 @@
         <div class="neo p-4">
           <p class="text-2xl font-bold text-gray-900">Harsh Dubey</p>
           <p class="text-sm text-gray-600 mt-1">AI Researcher and Firmware Engineer</p>
-          <p class="text-sm text-gray-600">M.S. in Computer Science, SDSU (GPA 4.0) · B.S. in Electrical Engineering, SDSU</p>
+          <p class="text-sm text-gray-600">M.S. in Computer Science, SDSU (GPA 4.0)</p>
+          <p class="text-sm text-gray-600">B.S. in Electrical Engineering, SDSU</p>
         </div>
 
         <div class="neo p-2 flex items-center gap-3" aria-label="Social links">
@@ -256,16 +257,16 @@
           <div class="skill-group">
             <h4 class="text-xs font-semibold uppercase tracking-wide text-gray-500">AI & Research</h4>
             <div class="mt-2">
-              <span class="tag neo-sm">Multimodal video understanding</span>
-              <span class="tag neo-sm">Long‑video modeling</span>
-              <span class="tag neo-sm">Vision‑Language (VLM)</span>
-              <span class="tag neo-sm">LLM + textual memory</span>
-              <span class="tag neo-sm">Key‑frame reasoning</span>
-              <span class="tag neo-sm">Evaluation metrics (VCS, VAD‑Score)</span>
-              <span class="tag neo-sm">Dataset design (CLIP‑CC)</span>
-              <span class="tag neo-sm">Recurrent multimodal (RMM)</span>
-              <span class="tag neo-sm">TensorFlow / Keras</span>
-              <span class="tag neo-sm">Experimentation & benchmarking</span>
+              <span class="tag neo-sm">Python</span>
+              <span class="tag neo-sm">PyTorch</span>
+              <span class="tag neo-sm">NumPy</span>
+              <span class="tag neo-sm">Matplotlib</span>
+              <span class="tag neo-sm">Machine Learning</span>
+              <span class="tag neo-sm">Deep Learning</span>
+              <span class="tag neo-sm">Natural Language Processing</span>
+              <span class="tag neo-sm">Computer Vision</span>
+              <span class="tag neo-sm">LLMs</span>
+              <span class="tag neo-sm">Multimodal Models</span>
             </div>
           </div>
 
@@ -312,7 +313,7 @@
         <section id="about" class="scroll-mt-24 neo p-6">
           <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Harsh Dubey</h1>
           <p class="mt-5 text-[color:var(--muted)] leading-relaxed text-justify">
-            Hi! I'm an AI researcher focused on building multimodal AI systems that are broadly useful and robust. I have a track record of leading high-impact projects from conception to deployment. At SDSU's MINT Lab, I designed and led the development of the <strong>Video Comprehension Score</strong>, <strong>Recurrent Multimodal Models</strong>, and the <strong>CLIP-CC Dataset</strong>, managing a team of three. Previously at Amazon, I led the development of the <strong>Frugal Event Detection device (FRED)</strong>, and at Trilliant, I spearheaded the creation of <strong>point-to-point wireless IoT Water Meter Devices</strong>. I hold an M.S. in Computer Science (4.0 GPA) and a B.S. in Electrical Engineering, both from South Dakota State University.
+            Hi! I am an AI researcher and firmware engineer with expertise in building and evaluating multimodal AI systems and wireless embedded systems. I work at <strong>SDSU’s MINT Lab</strong>, where I designed and led the <strong>Video Comprehension Score (VCS)</strong>, the <strong>Recurrent Multimodal Model (RMM)</strong>, and the <strong>CLIP‑CC</strong> dataset. In the past year at MINT, I authored one first‑author paper and two first‑author student abstracts and managed a team of three co‑authors. At SDSU, I also taught the <strong>EE‑300 Electrical Systems and Machines</strong> lab and I will graduate with an <strong>M.S. in Computer Science (GPA 4.0)</strong>. Previously, I was a <strong>Wireless Software Engineer</strong> on Amazon’s <strong>Just Walk Out</strong> team, where I led development of multiple embedded libraries, including the <strong>Frugal Event Detection (FRED)</strong> library. Before that, at <strong>Trilliant</strong>, I delivered firmware for wireless <strong>ANSI power meters</strong>, led development of wireless <strong>water meters</strong>, and built the <strong>dashboard ecosystem</strong> supporting those devices.
           </p>
         </section>
 
@@ -477,6 +478,30 @@
         <section id="publications" class="mt-12 scroll-mt-24">
           <h2 class="text-2xl font-semibold text-gray-900">Publications</h2>
           <div class="mt-6 space-y-4">
+            <!-- RMM paper (new, first) -->
+            <article class="pub-card tone-paper h-full">
+              <div class="flex h-full">
+                <div class="pub-accent"></div>
+                <div class="grid md:grid-cols-[280px_1fr] gap-4 p-4 w-full">
+                  <div class="rounded-lg overflow-hidden h-[180px]">
+                    <img src="CLIP-CC.gif" alt="RMM Demo" class="w-full h-full object-cover object-center" loading="lazy"/>
+                  </div>
+                  <div class="flex flex-col">
+                    <h3 class="text-lg font-semibold">Recurrent Multimodal Model (RMM): For Long Video Processing</h3>
+                    <p class="text-sm author mt-1"><a href="#" class="link-underline">Harsh Dubey</a>, <a href="#" class="link-underline">Chulwoo Pack</a></p>
+                    <p class="text-sm text-gray-600 mt-1">Under Review</p>
+                    <div class="mt-2 inline-flex items-center gap-2">
+                      <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
+                      <span class="text-sm text-[color:var(--muted)]"></span>
+                    </div>
+                    <div class="mt-auto flex flex-wrap gap-2 pt-3">
+                      <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>Code</a>
+                    </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- VCS paper (second) -->
             <article class="pub-card tone-paper h-full">
               <div class="flex h-full">
                 <div class="pub-accent"></div>
@@ -485,14 +510,12 @@
                     <img src="CLIP-CC.gif" alt="CLIP-CC Demo" class="w-full h-full object-cover object-center" loading="lazy"/>
                   </div>
                   <div class="flex flex-col">
-                    <h3 class="text-lg font-semibold">Leveraging Textual Memory and Key Frame Reasoning for Full Video Understanding Using Off‑the‑Shelf LLMs and VLMs <span class="opacity-80">(Student Abstract)</span></h3>
-                    <p class="text-sm author mt-1">
-                      <a href="#" class="link-underline">Harsh Dubey</a>, <a href="#" class="link-underline">Chulwoo Pack</a>
-                    </p>
-                    <p class="text-sm text-gray-600 mt-1">AAAI 2025</p>
+                    <h3 class="text-lg font-semibold">Video Comprehension Score (VCS): A Metric for Long‑Form Video Description Evaluation</h3>
+                    <p class="text-sm author mt-1"><a href="#" class="link-underline">Harsh Dubey</a>, <a href="#" class="link-underline">Chulwoo Pack</a></p>
+                    <p class="text-sm text-gray-600 mt-1">Preprint</p>
                     <div class="mt-2 inline-flex items-center gap-2">
                       <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
-                      <span class="text-sm text-[color:var(--muted)]">Combine a <strong>VLM</strong> with an <strong>LLM</strong> plus <strong>textual memory</strong> and <strong>key‑frame reasoning</strong> for fine‑grained, long‑video understanding; introduce <strong>VAD‑Score</strong>; competitive results on <strong>DREAM‑1K</strong>.</span>
+                      <span class="text-sm text-[color:var(--muted)]">VCS evaluates long‑form descriptions via three components: Global Alignment (thematic), Local Alignment (semantic), and Narrative Alignment (chronological with tolerance). It detects corrupted content, maintains cross‑author consistency (>80%), and VCSshort achieves state‑of‑the‑art human correlation on VATEX‑EVAL (9‑ref) with competitive 1‑ref performance.</span>
                     </div>
                     <div class="mt-auto flex flex-wrap gap-2 pt-3">
                       <a class="pill pill-website" href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener">
@@ -516,6 +539,7 @@
               </div>
             </article>
 
+            <!-- Leveraging textual memory paper (third) -->
             <article class="pub-card tone-paper h-full">
               <div class="flex h-full">
                 <div class="pub-accent"></div>
@@ -524,18 +548,18 @@
                     <img src="vcs.gif" alt="VCS Demo" class="w-full h-full object-cover object-center" loading="lazy"/>
                   </div>
                   <div class="flex flex-col">
-                    <h3 class="text-lg font-semibold">Your Next Paper Title</h3>
-                    <p class="text-sm author mt-1"><a href="#" class="link-underline">Author A</a>, <a href="#" class="link-underline">Author B</a>, <a href="#" class="link-underline">Author C</a></p>
-                    <p class="text-sm text-gray-600 mt-1">Venue · Year</p>
+                    <h3 class="text-lg font-semibold">Leveraging Textual Memory and Key Frame Reasoning for Full Video Understanding Using Off‑the‑Shelf LLMs and VLMs <span class="opacity-80">(Student Abstract)</span></h3>
+                    <p class="text-sm author mt-1"><a href="#" class="link-underline">Harsh Dubey</a>, <a href="#" class="link-underline">Chulwoo Pack</a></p>
+                    <p class="text-sm text-gray-600 mt-1">AAAI 2025</p>
                     <div class="mt-2 inline-flex items-center gap-2">
                       <span class="text-[11px] font-semibold rounded-md px-2 py-0.5 border border-[color:var(--border)]">TL;DR</span>
-                      <span class="text-sm text-[color:var(--muted)]">One‑line summary of the contribution.</span>
+                      <span class="text-sm text-[color:var(--muted)]">We integrate a VLM and LLM with a textual memory mechanism to maintain temporal continuity and context for fine‑grained long‑video understanding. We also introduce VAD‑Score to quantify precision, recall, and F1 for events, subjects, and objects. The approach achieves competitive results on DREAM‑1K across live‑action, animation, shorts, stock, and YouTube videos.</span>
                     </div>
                     <div class="mt-auto flex flex-wrap gap-2 pt-3">
-                      <a class="pill pill-website" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1 4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
-                      <a class="pill pill-pdf" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
-                      <a class="pill pill-github" href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>Code</a>
-                      <a class="pill pill-arxiv" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19h16M7 19V5h3l2 3 2-3h3v14"/></svg>arXiv</a>
+                      <a class="pill pill-website" href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z"/><path d="M3 12h18M12 3a15.3 15.3 0 0 1 4 9 15.3 15.3 0 0 1-4 9 15.3 15.3 0 0 1 4-9 15.3 15.3 0 0 1 4-9Z"/></svg>Website</a>
+                      <a class="pill pill-pdf" href="https://ojs.aaai.org/index.php/AAAI/article/view/35248" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M7 3h8l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M15 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>PDF</a>
+                      <a class="pill pill-github" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A12 12 0 0 0 0 12.7c0 5.4 3.4 10 8.2 11.6.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.6-1.5-2-1.5-2-1.2-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 3 1.5 3.7 1.2.1-.8.4-1.5.7-1.9-2.6-.3-5.4-1.4-5.4-6.2 0-1.4.5-2.5 1.3-3.4-.1-.3-.6-1.7.1-3.5 0 0 1-.3 3.5 1.3a12 12 0 0 1 6.4 0c2.5-1.6 3.5-1.3 3.5-1.3.7 1.8.2 3.2.1 3.5.8.9 1.3 2 1.3 3.4 0 4.8-2.8 5.9-5.4 6.2.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12.2 12.2 0 0 0 24 12.7 12 12 0 0 0 12 .5Z"/></svg>Code</a>
+                      <a class="pill pill-arxiv" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19h16M7 19V5h3l2 3 2-3h3v14"/></svg>arXiv</a>
                     </div>
                 </div>
               </div>
@@ -553,11 +577,9 @@
                 <div class="pub-accent"></div>
                 <div class="p-3 sm:p-4 w-full flex flex-col min-h-[150px]">
                   <div class="text-sm min-w-0">
-                    <span class="inline-flex items-center min-w-0 align-middle">
-                      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 12 16" class="inline-block align-middle" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
-                      <a class="ml-1 link-underline break-words min-w-0 align-middle" href="https://github.com/Multimodal-Intelligence-Lab/Video-Comprehension-Score" target="_blank" rel="noopener">Multimodal-Intelligence-Lab<span class="font-semibold">/Video-Comprehension-Score</span></a>
-                      <span class="ml-2 badge neo-sm align-middle">Metric</span>
-                    </span>
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 12 16" class="inline-block align-middle" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+                     <a class="ml-1 link-underline break-words min-w-0 align-middle" href="https://github.com/Multimodal-Intelligence-Lab/Video-Comprehension-Score" target="_blank" rel="noopener">Multimodal-Intelligence-Lab<span class="font-semibold">/Video-Comprehension-Score</span></a>
+                    <span class="ml-2 badge neo-sm align-middle whitespace-nowrap float-right">Metric</span>
                   </div>
                   <div class="text-xs mt-3 text-[color:var(--muted)]">Automated scoring for long‑form video description quality (events, subjects, objects) with reference implementation.</div>
                   <div class="mt-auto pt-3 text-xs flex items-center flex-wrap">
@@ -590,11 +612,9 @@
                 <div class="pub-accent"></div>
                 <div class="p-3 sm:p-4 w-full flex flex-col min-h-[150px]">
                   <div class="text-sm min-w-0">
-                    <span class="inline-flex items-center min-w-0 align-middle">
-                      <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 12 16" class="inline-block align-middle" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
-                      <a class="ml-1 link-underline break-words min-w-0 align-middle" href="https://github.com/Multimodal-Intelligence-Lab/CLIP-CC" target="_blank" rel="noopener">Multimodal-Intelligence-Lab<span class="font-semibold">/CLIP-CC</span></a>
-                      <span class="ml-2 badge neo-sm align-middle">Dataset</span>
-                    </span>
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 12 16" class="inline-block align-middle" height="14" width="14" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+                     <a class="ml-1 link-underline break-words min-w-0 align-middle" href="https://github.com/Multimodal-Intelligence-Lab/CLIP-CC" target="_blank" rel="noopener">Multimodal-Intelligence-Lab<span class="font-semibold">/CLIP-CC</span></a>
+                    <span class="ml-2 badge neo-sm align-middle whitespace-nowrap float-right">Dataset</span>
                   </div>
                   <div class="text-xs mt-3 text-[color:var(--muted)]">Contrastive captioning dataset with CLIP‑aligned supervision; used to train/test recurrent multimodal architectures.</div>
                   <div class="mt-auto pt-3 text-xs flex items-center flex-wrap">
