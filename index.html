@@ -199,62 +199,6 @@
     .proj-row:hover .proj-title { text-decoration: underline; text-underline-offset: 2px; }
     .proj-row:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-    /* Fallback: flatten neumorphism for legacy browsers via class hook */
-    .no-neo body { background: #0b1220; color: #e5e7eb; }
-    .no-neo .divider { border-color: #1c2432; }
-    .no-neo .text-gray-900, .no-neo .text-gray-800, .no-neo .text-gray-700, .no-neo h3.font-semibold { color: #e5e7eb; }
-    .no-neo .text-gray-600, .no-neo .text-gray-500, .no-neo .text-gray-400 { color: #9ca3af; }
-    .no-neo .author a { color: #60a5fa; }
-
-    .no-neo .neo,
-    .no-neo .neo-pressed,
-    .no-neo .neo-circle,
-    .no-neo .news-card,
-    .no-neo .pub-card,
-    .no-neo .xp-icon,
-    .no-neo .neo-frame,
-    .no-neo .badge,
-    .no-neo .tag,
-    .no-neo .pill {
-      background: #101723;
-      border: 1px solid #1c2432;
-      box-shadow: none;
-      border-radius: 12px;
-    }
-    .no-neo .neo-circle { border-radius: 9999px; }
-    .no-neo .neo-frame img { border-radius: 8px; }
-
-    /* Projects-like rails and borders */
-    .no-neo .projects-list { border-top: 1px solid #1c2432; border-bottom: 1px solid #1c2432; }
-    .no-neo .proj-row { border-top: 1px solid #1c2432; }
-    .no-neo .proj-rail { background: #2563eb; }
-    .no-neo .proj-desc, .no-neo .proj-context, .no-neo .proj-bullets li { color: #9ca3af; }
-
-    /* Tone rails for pubs/software when CSS vars are unavailable */
-    .no-neo .tone-paper .pub-accent { background: #60a5fa; }
-    .no-neo .tone-dataset .pub-accent { background: #34d399; }
-    .no-neo .tone-code .pub-accent { background: #a78bfa; }
-    .no-neo .tone-metric .pub-accent { background: #fbbf24; }
-    .no-neo .tone-talk .pub-accent { background: #f472b6; }
-
-    /* Nav pill fallback where color-mix/backdrop-filter may be missing */
-    .no-neo .news-nav-btn { background-color: rgba(17,24,39,.35); border: 1px solid #1c2432; box-shadow: none; }
-
-    /* Safety net for browsers without CSS variables but with @supports */
-    @supports not (color: var(--text)) {
-      body { background: #0b1220; color: #e5e7eb; }
-      .divider { border-color: #1c2432; }
-      .neo, .neo-pressed, .neo-circle, .news-card, .pub-card, .xp-icon, .neo-frame, .badge, .tag, .pill {
-        background: #101723; border: 1px solid #1c2432; box-shadow: none; border-radius: 12px;
-      }
-      .projects-list { border-top: 1px solid #1c2432; border-bottom: 1px solid #1c2432; }
-      .proj-row { border-top: 1px solid #1c2432; }
-      .proj-rail { background: #2563eb; }
-      .text-gray-900, .text-gray-800, .text-gray-700, h3.font-semibold { color: #e5e7eb; }
-      .text-gray-600, .text-gray-500, .text-gray-400 { color: #9ca3af; }
-      .author a { color: #60a5fa; }
-    }
-
     /* Mobile-only breakpoint for very small screens (phones only) */
     @media (max-width: 480px) {
       .main-container { min-width: unset !important; padding: 1rem !important; }
@@ -268,15 +212,8 @@
   </style>
   <script>
     (function(){
-      var savedTheme = localStorage.getItem('theme') || 'dark';
-      var root = document.documentElement;
-      root.dataset.theme = savedTheme;
-      try {
-        var supportsVars = !!(window.CSS && CSS.supports && (CSS.supports('color', 'var(--fake)') || CSS.supports('--a: 0')));
-        if (!supportsVars) { root.classList.add('no-neo'); }
-      } catch (_) {
-        root.classList.add('no-neo');
-      }
+      const savedTheme = localStorage.getItem('theme');
+      document.documentElement.dataset.theme = savedTheme || 'dark';
     })();
   </script>
 </head>
